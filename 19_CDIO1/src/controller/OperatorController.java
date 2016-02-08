@@ -3,12 +3,15 @@ package controller;
 import java.util.List;
 
 import data.OperatorDTO;
-import interfaces.DALException;
 import interfaces.IOperatorDAO;
 
 public class OperatorController implements IOperatorDAO {
 	
-	List<OperatorDTO> operatorList;
+	OperatorDTO data;
+	
+	public OperatorController() {
+		
+	}
 
 	@Override
 	public OperatorDTO getOperatoer(int oprId) throws DALException {
@@ -19,13 +22,13 @@ public class OperatorController implements IOperatorDAO {
 	@Override
 	public List<OperatorDTO> getOperatoerList() throws DALException {
 		// TODO Auto-generated method stub
-		return operatorList;
+		return data.getOperatorList();
 	}
 
 	@Override
 	public void createOperatoer(OperatorDTO opr) throws DALException {
 		// TODO Auto-generated method stub
-		operatorList.add(opr);
+		data.getOperatorList().add(opr);
 	}
 
 	@Override
