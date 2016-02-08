@@ -7,5 +7,12 @@ public class OperatorDTO {
 	String ini;		//2-3 karakterer til initialer.
 	int cpr;		//Skal skrives uden bindestreg
 	String password;
+	
+	public OperatorDTO(String forNavn, String efterNavn, int cpr) {
+		oprNavn += forNavn+" ";
+		oprNavn += efterNavn;
+		this.cpr = cpr;
+		oprId = 0;
+	}
 
 }

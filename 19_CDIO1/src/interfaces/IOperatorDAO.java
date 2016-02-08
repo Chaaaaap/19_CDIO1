@@ -1,4 +1,4 @@
-package interfacej;
+package interfaces;
 
 import java.util.List;
 

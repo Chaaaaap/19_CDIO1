@@ -3,8 +3,8 @@ package controller;
 import java.util.List;
 
 import data.OperatorDTO;
-import interfacej.DALException;
-import interfacej.IOperatorDAO;
+import interfaces.DALException;
+import interfaces.IOperatorDAO;
 
 public class OperatorController implements IOperatorDAO {
 	
