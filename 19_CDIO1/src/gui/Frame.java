@@ -44,7 +44,7 @@ public class Frame implements ActionListener {
 
 
 		JButton button = new JButton(text);
-		button.addActionListener(new loginButton(field));
+		button.addActionListener(null);
 		button.setAlignmentX(Component.CENTER_ALIGNMENT);
 		button.setMaximumSize(new Dimension(100, 30));
 		container.add(button);
