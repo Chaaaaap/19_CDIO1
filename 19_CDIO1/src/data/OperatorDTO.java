@@ -19,8 +19,8 @@ public class OperatorDTO {
 		this.oprId = oprId;
 	}
 	
-	public void createOperator() {
-		new OperatorDTO("Mikkel", "Hansen", "190792-1685", 19);
+	public void createOperator(String forNavn, String efterNavn, String cpr, int oprId) {
+		new OperatorDTO(forNavn, efterNavn, cpr, oprId);
 		operatorList.add(this);
 		cprList.add(cpr);
 		password = createTempPassword();
