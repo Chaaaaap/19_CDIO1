@@ -1,5 +1,5 @@
 package interfacej;
 
-public class Interface {
+public interface Interface {
 
 }
