@@ -14,33 +14,33 @@ public class OperatorController implements IOperatorDAO {
 	}
 
 	@Override
-	public OperatorDTO getOperatoer(int oprId) throws DALException {
+	public OperatorDTO getOperatoer(int oprId) {//throws DALException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<OperatorDTO> getOperatoerList() throws DALException {
+	public List<OperatorDTO> getOperatoerList() {//throws DALException {
 		// TODO Auto-generated method stub
 		return data.getOperatorList();
 	}
 
 	@Override
-	public void createOperatoer(OperatorDTO opr) throws DALException {
+	public void createOperatoer(OperatorDTO opr) {//throws DALException {
 		// TODO Auto-generated method stub
 		data.getOperatorList().add(opr);
 	}
 
 	@Override
-	public void updateOperatoer(OperatorDTO opr) throws DALException {
+	public void updateOperatoer(OperatorDTO opr) {//throws DALException {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void deleteOperatoer(OperatorDTO opr) throws DALException {
+	public void deleteOperatoer(OperatorDTO opr) { //throws DALException {
 		// TODO Auto-generated method stub
-		operatorList.remove(opr);
+		data.getOperatorList().remove(opr);
 	}
 
 }
