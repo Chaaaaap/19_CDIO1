@@ -3,10 +3,15 @@ package interfaces;
 import java.util.List;
 
 import data.OperatorDTO;
+import interfaces.IOperatorDAO.DALException;
 
 public interface IOperatorDAO {
 	
-	OperatorDTO getOperatoer(int oprId);// throws DALException;
+	public class DALException extends Exception {
+
+	}
+
+	OperatorDTO getOperatoer(int oprId) throws DALException;
 
 	List<OperatorDTO> getOperatoerList();// throws DALException;
 
