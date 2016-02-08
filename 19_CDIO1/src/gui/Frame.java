@@ -1,74 +1,80 @@
 package gui;
-
-import java.awt.FlowLayout;
-import java.awt.GridBagLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+ 
+/*
+ * BoxLayoutDemo.java requires no other files.
+ */
+ 
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Dimension;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-
-public class Frame extends JFrame implements ActionListener {
-
-	public Frame (String title) { 
-		super(title);
-		getContentPane().setLayout(new BoxLayout(, defaultCloseOperation));
-		setSize(525, 250);
-		setLocationRelativeTo(null);
-		addComponents(); 
-		setVisible(true);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);		
-	}
-
-	private void addComponents() { 	
-		// Alt hvad der er i denne metode er det der bliver vist i GUI
-		// i den rækkefølge som det er skrevet i.
-
-
-
-		JLabel info = new JLabel("Overskrift");
-		info.setFont(info.getFont().deriveFont(14.0f));
-		getContentPane().add(info);
-
-		JButton login = new JButton("Login");
-		login.addActionListener(this);
-		getContentPane().add(login);
-		getRootPane().setDefaultButton(login);
-
-		JButton signUp = new JButton("Sign Up");
-		signUp.addActionListener(this);
-		getContentPane().add(signUp);
-		getRootPane().setDefaultButton(signUp);
-		
-		JButton changePswd = new JButton("Change Password");
-		changePswd.addActionListener(this);
-		getContentPane().add(changePswd);
-		getRootPane().setDefaultButton(changePswd);
-		
-		JButton weighing = new JButton("Weighing");
-		weighing.addActionListener(this);
-		getContentPane().add(weighing);
-		getRootPane().setDefaultButton(weighing);
-		
-		JButton close = new JButton("Close");
-		close.addActionListener(this);
-		getContentPane().add(close);
-		getRootPane().setDefaultButton(close);
-
-
-
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
-
-
-	}
-
-
-
-
+ 
+public class Frame {
+    public static void addComponentsToPane(Container pane) {
+        pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
+        
+        addLabel(pane);
+        addAButton("Login", pane);
+        addAButton("Sign Up", pane);
+        
+       
+    }
+ 
+    private static void addLabel(Container container) {
+       	JLabel field = new JLabel("Operator Administration");
+       	field.setAlignmentX(Component.CENTER_ALIGNMENT);
+        field.setFont(field.getFont().deriveFont(25.0f));
+    	container.add(field);
+    }
+    
+    
+    private static void addAButton(String text, Container container) {
+ 
+    	
+    	JButton button = new JButton(text);
+        button.setAlignmentX(Component.CENTER_ALIGNMENT);
+        button.setMaximumSize(new Dimension(100, 30));
+        
+        container.add(button);
+        
+        
+        
+    }
+ 
+    /**
+     * Create the GUI and show it.  For thread safety,
+     * this method should be invoked from the
+     * event-dispatching thread.
+     */
+    private static void createAndShowGUI() {
+        //Create and set up the window.
+        JFrame frame = new JFrame("Operator Administration");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ 
+        //Set up the content pane.
+        addComponentsToPane(frame.getContentPane());
+ 
+        //Display the window.
+        frame.pack();
+        frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
+        frame.setSize(600, 180);
+    }
+ 
+    public static void main(String[] args) {
+        //Schedule a job for the event-dispatching thread:
+        //creating and showing this application's GUI.
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                createAndShowGUI();
+            }
+        });
+    }
+    
+    
 }
