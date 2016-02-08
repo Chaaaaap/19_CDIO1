@@ -20,10 +20,20 @@ import javax.swing.JTextField;
 
 public class Frame implements ActionListener {
 
-	public void addComponentsToPane(Container pane) {
+	
+	public static void main(String[] args) {
+		//Schedule a job for the event-dispatching thread:
+		//creating and showing this application's GUI.
+		javax.swing.SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				createAndShowGUI();
+			}
+		});
+	}
+	
+	public static void addComponentsToPane(Container pane) {
 		pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
 		
-		createAndShowGUI();
 		addLabel("Afvejningssystem", pane);
 		addAButton("Login", pane);
 		addAButton("Sign Up", pane);
@@ -31,7 +41,7 @@ public class Frame implements ActionListener {
 
 	}
 
-	public void addLabel(String text, Container container) {
+	public static void addLabel(String text, Container container) {
 		JLabel field = new JLabel(text);
 		field.setAlignmentX(Component.CENTER_ALIGNMENT);
 		field.setFont(field.getFont().deriveFont(25.0f));
@@ -41,7 +51,7 @@ public class Frame implements ActionListener {
 	}
 
 
-	public void addAButton(String text, Container container) {
+	public static void addAButton(String text, Container container) {
 
 
 		JButton button = new JButton(text);
@@ -61,7 +71,7 @@ public class Frame implements ActionListener {
 	 * this method should be invoked from the
 	 * event-dispatching thread.
 	 */
-	public void createAndShowGUI() {
+	public static void createAndShowGUI() {
 		//Create and set up the window.
 		JFrame frame = new JFrame("Main Menu");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -75,6 +85,7 @@ public class Frame implements ActionListener {
 		frame.setSize(600, 180);
 		frame.setLocationRelativeTo(null);
 	}
+
 
 
 
