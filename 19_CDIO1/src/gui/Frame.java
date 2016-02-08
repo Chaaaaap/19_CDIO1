@@ -23,7 +23,7 @@ public class Frame implements ActionListener {
 	public static void addComponentsToPane(Container pane) {
 		pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
 
-		addLabel("Operator Administration", pane);
+		addLabel("Afvejningssystem", pane);
 		addAButton("Login", pane);
 		addAButton("Sign Up", pane);
 
