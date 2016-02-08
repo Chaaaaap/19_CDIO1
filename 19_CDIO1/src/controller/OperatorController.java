@@ -25,7 +25,7 @@ public class OperatorController implements IOperatorDAO {
 	@Override
 	public void createOperatoer(OperatorDTO opr) throws DALException {
 		// TODO Auto-generated method stub
-		
+		operatorList.add(opr);
 	}
 
 	@Override
@@ -37,7 +37,7 @@ public class OperatorController implements IOperatorDAO {
 	@Override
 	public void deleteOperatoer(OperatorDTO opr) throws DALException {
 		// TODO Auto-generated method stub
-		
+		operatorList.remove(opr);
 	}
 
 }

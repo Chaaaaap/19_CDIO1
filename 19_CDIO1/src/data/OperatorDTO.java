@@ -8,11 +8,15 @@ public class OperatorDTO {
 	int cpr;		//Skal skrives uden bindestreg
 	String password;
 	
-	public OperatorDTO(String forNavn, String efterNavn, int cpr) {
+	public OperatorDTO(String forNavn, String efterNavn, int cpr, int oprId) {
 		oprNavn += forNavn+" ";
 		oprNavn += efterNavn;
 		this.cpr = cpr;
-		oprId = 0;
+		this.oprId = oprId;
+	}
+	
+	public void createOperator() {
+		new OperatorDTO("hej", "smukke", 1907921685, 22);
 	}
 
 }
