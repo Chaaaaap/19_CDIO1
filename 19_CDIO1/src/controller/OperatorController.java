@@ -22,25 +22,24 @@ public class OperatorController implements IOperatorDAO {
 	}
 
 	@Override
-	public List<OperatorDTO> getOperatoerList() {//throws DALException {
+	public List<OperatorDTO> getOperatoerList() throws DALException {
 		// TODO Auto-generated method stub
 		return data.getOperatorList();
 	}
 
 	@Override
-	public void createOperatoer(OperatorDTO opr) {//throws DALException {
-		// TODO Auto-generated method stub
+	public void createOperatoer(OperatorDTO opr) throws DALException {
 		data.getOperatorList().add(opr);
 	}
 
 	@Override
-	public void updateOperatoer(OperatorDTO opr) {//throws DALException {
+	public void updateOperatoer(OperatorDTO opr) throws DALException {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void deleteOperatoer(OperatorDTO opr) { //throws DALException {
+	public void deleteOperatoer(OperatorDTO opr) throws DALException {
 		// TODO Auto-generated method stub
 		data.getOperatorList().remove(opr);
 	}
