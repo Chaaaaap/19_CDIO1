@@ -15,7 +15,9 @@ public class OperatorController implements IOperatorDAO {
 
 	@Override
 	public OperatorDTO getOperatoer(int oprId) {//throws DALException {
-		// TODO Auto-generated method stub
+		for(int i = 0; i < data.getOperatorList().size(); i++)
+			if(data.getOperatorList().get(i).getOprId() == oprId)
+				return data.getOperatorList().get(i);
 		return null;
 	}
 

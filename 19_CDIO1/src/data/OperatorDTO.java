@@ -57,5 +57,12 @@ public class OperatorDTO {
 				return operatorList.get(i).password;
 		return null;
 	}
+	
+	public int getOprId() {
+		for(int i = 0; i < operatorList.size(); i++)
+			if(operatorList.get(i).oprId == oprId)
+				return oprId;
+		return -1;
+	}
 
 }
