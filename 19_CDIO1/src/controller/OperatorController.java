@@ -42,5 +42,15 @@ public class OperatorController implements IOperatorDAO {
 		// TODO Auto-generated method stub
 		data.getOperatorList().remove(opr);
 	}
+	
+	public boolean passwordCheck(String oprNavn, String password) {
+		for(int i = 0; i < data.getOperatorList().size(); i++)
+			if(data.getOperatorList().get(i).getOprNavn(oprNavn).equals(oprNavn)) {
+				if(data.getOperatorList().get(i).getPassword(oprNavn).equals(password))
+					return true;
+			}
+		return false;
+				
+	}
 
 }
