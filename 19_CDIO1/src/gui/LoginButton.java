@@ -1,8 +1,16 @@
 package gui;
 
-public class LoginButton {
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-	public void loginButton() {
-		
+import javax.swing.KeyStroke;
+
+public class LoginButton implements ActionListener {
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+			System.out.println("Login");
+
 	}
+
 }

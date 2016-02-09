@@ -35,8 +35,7 @@ public class Frame implements ActionListener {
 		pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
 		
 		addLabel("Afvejningssystem", pane);
-		addAButton("Login", pane);
-		addAButton("Sign Up", pane);
+		addAButton(pane);
 
 
 	}
@@ -51,17 +50,22 @@ public class Frame implements ActionListener {
 	}
 
 
-	public static void addAButton(String text, Container container) {
+	public static void addAButton(Container container) {
 
 
-		JButton button = new JButton(text);
-		button.addActionListener(null);
-		button.setAlignmentX(Component.CENTER_ALIGNMENT);
-		button.setMaximumSize(new Dimension(100, 30));
-		container.add(button);
+		JButton loginBtn = new JButton("Login");
+		loginBtn.addActionListener(new LoginButton());
+		loginBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+		loginBtn.setMaximumSize(new Dimension(100, 30));
+		container.add(loginBtn);
 		container.add(Box.createVerticalGlue());
 
-
+		JButton signUpBtn = new JButton("Sign Up");
+		signUpBtn.addActionListener(new SignUpButton());
+		signUpBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+		signUpBtn.setMaximumSize(new Dimension(100, 30));
+		container.add(signUpBtn);
+		container.add(Box.createVerticalGlue());
 
 
 	}
@@ -86,15 +90,9 @@ public class Frame implements ActionListener {
 		frame.setLocationRelativeTo(null);
 	}
 
-
-
-
 	@Override
-	public void actionPerformed(ActionEvent loginClicked) {
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
 		
-
 	}
-	
-
-
 }
