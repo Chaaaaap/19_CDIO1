@@ -24,7 +24,7 @@ public class Frame {
 	public void addComponentsToPane(Container pane) {
 		pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
 		
-		addLabel("Afvejningssystem", pane, 25.0f);
+		addLabel("CDIO1", pane, 25.0f);
 		addAButton(pane, "Login", new LoginButton());
 		addAButton(pane, "Sign Up", new SignUpButton());
 
@@ -76,5 +76,12 @@ public class Frame {
 		frame.setVisible(true);
 		frame.setSize(600, 180);
 		frame.setLocationRelativeTo(null);
+		
+	}
+	
+	public void closeGUI() {	
+		
+		
 	}
 }
+

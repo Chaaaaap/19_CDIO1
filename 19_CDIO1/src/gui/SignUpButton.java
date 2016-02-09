@@ -14,17 +14,18 @@ public class SignUpButton implements ActionListener {
 	private void addComponentsToPane(Container contentPane) {
 		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.Y_AXIS));
 		
-		f.addLabel("Sign Up Menu", contentPane , 25.0f);
-		f.addLabel("Username", contentPane, 15.0f);
+		f.addLabel("Sign Up page", contentPane , 25.0f);
+		f.addLabel("Desired Username", contentPane, 15.0f);
 		f.addTextField(contentPane);
-		f.addLabel("Password", contentPane, 15.0f);
+		f.addLabel("Desired Password", contentPane, 15.0f);
 		f.addTextField(contentPane);
+		f.addAButton(contentPane, "Sign Up", new SignedUpButton());
 		
 	}
 	
 	public void createAndShowGUI() {
 		//Create and set up the window.
-		JFrame frame = new JFrame("Sign Up page");
+		JFrame frame = new JFrame("Sign Up Menu");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		//Set up the content pane.
