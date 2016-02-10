@@ -5,8 +5,8 @@ public class Main {
 
 	public static void main(String[] args) { 
 		
-		Frame f = new Frame();
-		f.createAndShowGUI("Main Menu");
+		Frame frame = new Frame();
+		frame.createAndShowGUI("Main Menu");
 
 	}
 }
