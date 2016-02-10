@@ -8,6 +8,10 @@ import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.KeyStroke;
 
 public class LoginButton implements ActionListener {
@@ -21,16 +25,13 @@ public class LoginButton implements ActionListener {
 		f.addLabel("Username", contentPane, 15.0f);
 		f.addTextField(contentPane);
 		f.addLabel("Password", contentPane, 15.0f);
-		f.addTextField(contentPane);
-		f.addAButton(contentPane, "Enter", new EnterButton());
-		
+		f.addPasswordField(contentPane);
+		f.addAButton(contentPane, "Enter", new EnterButton());	
 	}
 	
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		createAndShowGUI();
-		
 	}
 		
 		public void createAndShowGUI() {
@@ -47,7 +48,5 @@ public class LoginButton implements ActionListener {
 			frame.setSize(600, 250);
 			frame.setLocationRelativeTo(null);
 		}
-
-	
 }
 
