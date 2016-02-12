@@ -10,7 +10,7 @@ public class TUIRun {
 
 	public void mainMenu(){
 		scan = new Scanner(System.in);
-		System.out.println("Velkommen til denne 'applikation'!\n");
+		System.out.println("Velkommen til 'applikation-navn'!\n");
 		System.out.println("Du har nu følgende valgmuligheder:\n"
 				+ "1. Opret ny bruger.\n"
 				+ "2. Skift password.\n"

@@ -11,8 +11,9 @@ public class TUIController {
 	}
 	
 	public void createrOperator() {
-		System.out.println("Indtast for- og efternavn på den nye operatør");
+		System.out.println("Indtast fornavn på den nye operatør");
 		String forNavn = scan.nextLine();
+		System.out.println("Indtast efternavn på den nye operatør");
 		String efterNavn = scan.nextLine();
 		System.out.println("Indtast CPR-nummer for operatøren");
 		String cpr = scan.nextLine();
