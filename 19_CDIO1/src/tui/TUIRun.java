@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class TUIRun {
 
 	TUIController cont = new TUIController();
-//	Scanner scan;
+	//	Scanner scan;
 	int choice;
 
 	public void mainMenu(){
@@ -22,27 +22,27 @@ public class TUIRun {
 
 			if(choice == 1){
 				createUser();
-//				scan.close();
+				//				scan.close();
 			}
 			else if(choice == 2){
 				changePassword();
-//				scan.close();
+				//				scan.close();
 			}
 			else if(choice == 3){
 				balancing();
-//				scan.close();
+				//				scan.close();
 			}
 			else if(choice == 4){
 				System.out.println("Du har afsluttet applikation. På gensyn.");
-//				scan.close();
+				//				scan.close();
 			}
 			else{
 				System.out.println("Du har indtastet et ikke gyldigt nummer. Prøv igen.");
-//				scan.close();
+				//				scan.close();
 			}
 		}
 		while(choice > 4);
-//		scan.close();
+		//		scan.close();
 	}
 
 	public void createUser(){
@@ -56,20 +56,20 @@ public class TUIRun {
 
 			if(choice == 1){
 				loginSysAdmin();
-//				scan.close();
+				//				scan.close();
 			}
 			else if(choice == 2){
 				mainMenu();
-//				scan.close();
+				//				scan.close();
 			}
 			else{
 				System.out.println("Du har indtastet et ikke gyldigt nummer. Prøv igen.");
-//				scan.close();
+				//				scan.close();
 			}
-			
+
 		}
 		while(choice > 2);
-//		scan.close();
+		//		scan.close();
 	}
 
 	public void changePassword(){
@@ -86,15 +86,15 @@ public class TUIRun {
 			}
 			else if(choice == 2){
 				mainMenu();
-//				scan.close();
+				//				scan.close();
 			}
 			else{
 				System.out.println("Du har indtastet et ikke gyldigt nummer. Prøv igen.");
-//				scan.close();
+				//				scan.close();
 			}
 		}
 		while(choice > 2);
-//		scan.close();
+		//		scan.close();
 	}
 
 	public void balancing(){
@@ -111,50 +111,47 @@ public class TUIRun {
 			}
 			else if(choice == 2){
 				mainMenu();
-//				scan.close();
+				//				scan.close();
 			}
 			else{
 				System.out.println("Du har indtastet et ikke gyldigt nummer. Prøv igen.");
-//				scan.close();
+				//				scan.close();
 			}
 		}
 		while(choice > 2);
-//		scan.close();
+		//		scan.close();
 	}
-	
+
 	public void loginSysAdmin(){
 		Scanner scan = new Scanner(System.in);
 		int oprId;
 		String password;
 		System.out.println("Login som sysadmin.");
-		do{
-			System.out.println("Bruger nr.:");
-			oprId = scan.nextInt();
-			System.out.println("Password:");
-			password = scan.next();
-			
-			if(sysAdminOprId() == oprId && password.equals(sysAdminPassword())){
-				cont.createrOperator();
-//				scan.close();
-			}
-			else{
-				System.out.println("Forkert bruger nr. eller password. Du bliver først tilbage til menuen før. \n");
-				createUser();
-//				scan.close();
-			}
+
+		System.out.println("Bruger nr.:");
+		oprId = scan.nextInt();
+		System.out.println("Password:");
+		password = scan.next();
+
+		if(sysAdminOprId() == oprId && password.equals(sysAdminPassword())){
+			cont.createrOperator();
+			//				scan.close();
 		}
-		while(sysAdminOprId() != oprId || !password.equals(sysAdminPassword()));
-//		scan.close();
+		else{
+			System.out.println("Forkert bruger nr. eller password. Du bliver først tilbage til menuen før. \n");
+			createUser();
+			//				scan.close();
+		}
 	}
-	
+
 	public int sysAdminOprId(){
 		int oprId = 10;
 		return oprId;
 	}
-	
+
 	public String sysAdminPassword(){
 		String password = "Abc02324";
 		return password;
 	}
-	
+
 }
