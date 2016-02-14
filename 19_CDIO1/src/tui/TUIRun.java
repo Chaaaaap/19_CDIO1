@@ -55,7 +55,8 @@ public class TUIRun {
 			choice = scan.nextInt();
 
 			if(choice == 1){
-				loginSysAdmin();
+				if(loginSysAdmin())
+					cont.createrOperator();
 				//				scan.close();
 			}
 			else if(choice == 2){
@@ -122,7 +123,7 @@ public class TUIRun {
 		//		scan.close();
 	}
 
-	public void loginSysAdmin(){
+	public boolean loginSysAdmin(){
 		Scanner scan = new Scanner(System.in);
 		int oprId;
 		String password;
@@ -134,14 +135,14 @@ public class TUIRun {
 		password = scan.next();
 
 		if(sysAdminOprId() == oprId && password.equals(sysAdminPassword())){
-			cont.createrOperator();
-			//				scan.close();
+			return true;
 		}
 		else{
 			System.out.println("Forkert bruger nr. eller password. Du bliver først tilbage til menuen før. \n");
 			createUser();
 			//				scan.close();
 		}
+		return false;
 	}
 
 	public int sysAdminOprId(){
