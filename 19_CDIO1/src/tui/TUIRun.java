@@ -15,13 +15,14 @@ public class TUIRun {
 
 	public void mainMenu(Scanner scan){
 		System.out.println("Velkommen til 'applikation-navn'!\n");
-		System.out.println("Du har nu følgende valgmuligheder:\n"
-				+ "1. Opret ny bruger.\n"
-				+ "2. Skift password.\n"
-				+ "3. Afvejning.\n"
-				+ "4. Afslut.\n"
-				+ "Indtast et nummer mellem 1-4:");
+		
 		do{
+			System.out.println("Du har nu følgende valgmuligheder:\n"
+					+ "1. Opret ny bruger.\n"
+					+ "2. Skift password.\n"
+					+ "3. Afvejning.\n"
+					+ "4. Afslut.\n"
+					+ "Indtast et nummer mellem 1-4:");
 			choice = scan.nextInt();
 
 			if(choice == 1){
