@@ -19,6 +19,9 @@ public class OperatorDTO {
 		this.oprId = oprId;
 		this.oprNavn = oprNavn;
 	}
+	public OperatorDTO() {
+		
+	}
 	
 	public void createOperator(String forNavn, String efterNavn, String oprNavn, String cpr, int oprId) {
 		new OperatorDTO(forNavn, efterNavn, oprNavn, cpr, oprId);
@@ -63,6 +66,10 @@ public class OperatorDTO {
 			if(operatorList.get(i).oprId == oprId)
 				return oprId;
 		return -1;
+	}
+	
+	public String getCPR() {
+		return cpr;
 	}
 
 }

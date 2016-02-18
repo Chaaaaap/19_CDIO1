@@ -11,6 +11,7 @@ public class TUIRun {
 	
 	public TUIRun() {
 		mainMenu(scan);
+		
 	}
 
 	public void mainMenu(Scanner scan){
