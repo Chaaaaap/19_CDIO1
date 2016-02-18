@@ -143,7 +143,8 @@ public class TUIRun {
 	
 	public double afvejning(Scanner scan) {
 		
-		System.out.println("Afvejning.\n" + "Indtast emballage vægt i kg.");
+		System.out.println("Afvejning.\n");
+		System.out.println("Indtast emballage vægt i kg.");
 		double emballage = scan.nextDouble();
 		System.out.println("Indtast bruttovægt i kg.");
 		double brutto = scan.nextDouble();
