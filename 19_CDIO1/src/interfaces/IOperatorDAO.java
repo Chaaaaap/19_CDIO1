@@ -3,11 +3,15 @@ package interfaces;
 import java.util.List;
 
 import data.OperatorDTO;
-import interfaces.IOperatorDAO.DALException;
 
 public interface IOperatorDAO {
 	
 	public class DALException extends Exception {
+
+		/****************************************************************
+		* Den ville meget gerne have et serienummer så det har den fået.*
+		****************************************************************/
+		private static final long serialVersionUID = 1L;
 
 	}
 
