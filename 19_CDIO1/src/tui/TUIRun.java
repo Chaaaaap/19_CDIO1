@@ -170,7 +170,7 @@ public class TUIRun {
 			return true;
 		}
 		else{
-			System.out.println("Forkert bruger nr. eller password. Du bliver først tilbage til menuen før. \n");
+			System.out.println("Forkert bruger nr. eller password. Du bliver ført tilbage til foregående menu. \n");
 			createUser(scan);
 			return false;
 		}
