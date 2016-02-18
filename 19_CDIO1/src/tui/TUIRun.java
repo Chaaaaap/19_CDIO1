@@ -5,11 +5,12 @@ import java.util.Scanner;
 public class TUIRun {
 
 	TUIController cont = new TUIController();
-	//	Scanner scan;
+	
+		Scanner scan = new Scanner(System.in);
+		
 	int choice;
 
-	public void mainMenu(){
-		Scanner scan = new Scanner(System.in);
+	public void mainMenu(Scanner scan){
 		System.out.println("Velkommen til 'applikation-navn'!\n");
 		System.out.println("Du har nu følgende valgmuligheder:\n"
 				+ "1. Opret ny bruger.\n"
@@ -53,7 +54,7 @@ public class TUIRun {
 					cont.createrOperator();
 			}
 			else if(choice == 2){
-				mainMenu();
+				mainMenu(scan);
 			}
 			else{
 				System.out.println("Du har indtastet et ikke gyldigt nummer. Prøv igen.");
@@ -75,7 +76,7 @@ public class TUIRun {
 				System.out.println("Skift password.");
 			}
 			else if(choice == 2){
-				mainMenu();
+				mainMenu(scan);
 			}
 			else{
 				System.out.println("Du har indtastet et ikke gyldigt nummer. Prøv igen.");
@@ -96,7 +97,7 @@ public class TUIRun {
 				System.out.println("Afvejning.");
 			}
 			else if(choice == 2){
-				mainMenu();
+				mainMenu(scan);
 			}
 			else{
 				System.out.println("Du har indtastet et ikke gyldigt nummer. Prøv igen.");
