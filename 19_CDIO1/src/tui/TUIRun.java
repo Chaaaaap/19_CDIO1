@@ -101,15 +101,17 @@ public class TUIRun {
 	}
 
 	public void balancing(Scanner scan){
-		System.out.println("Du har nu følgende valgmuligheder:\n"
-				+ "1. Foretag afvejning.\n"
+		System.out.println("Afvejning er kun tilladt for oprettede brugere.\nDu har nu følgende valgmuligheder:\n"
+				+ "1. Login.\n"
 				+ "2. Gå tilbage.\n"
 				+ "Indtast et nummer mellem 1-2:");
 		do{
 			choice = scan.nextInt();
 
 			if(choice == 1){
-				System.out.println("Afvejning.");
+				if (oprLogin(scan)) {
+					System.out.println(afvejning(scan));
+				}
 			}
 			else if(choice == 2){
 				mainMenu(scan);
@@ -119,6 +121,37 @@ public class TUIRun {
 			}
 		}
 		while(choice > 2);
+	}
+	
+	public boolean oprLogin(Scanner scan) {
+		String password;
+		int oprId;
+		
+		System.out.println("Bruger nr.:");
+		oprId = scan.nextInt();
+		System.out.println("Password:");
+		password = scan.next();
+		
+		for(int i = 0; i < odto.getOperatorList().size(); i++)
+			if(odto.getOperatorList().get(i).getOprId() == oprId)
+				if(odto.getOperatorList().get(i).getPassword(oprId).equals(password))
+					return true;
+		
+		return false;
+		
+	}
+	
+	public double afvejning(Scanner scan) {
+		
+		System.out.println("Afvejning.\n" + "Indtast emballage vægt i kg.");
+		double emballage = scan.nextDouble();
+		System.out.println("Indtast bruttovægt i kg.");
+		double brutto = scan.nextDouble();
+		
+		double netto = brutto - emballage;
+		
+		return netto;
+		
 	}
 
 	public boolean loginSysAdmin(){
