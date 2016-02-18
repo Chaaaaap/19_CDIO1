@@ -6,7 +6,7 @@ import data.OperatorDTO;
 
 public class TUIController {
 
-	Scanner scan;
+	private Scanner scan;
 	boolean fejl;
 	private OperatorDTO ODTO;
 	private boolean alreadyExist;
