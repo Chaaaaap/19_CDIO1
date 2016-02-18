@@ -13,6 +13,7 @@ public class TUIController {
 	private String forNavn;
 	private String efterNavn;
 	private String cpr;
+	private String oprNavn;
 
 	public TUIController() {
 		scan = new Scanner(System.in);
@@ -22,6 +23,8 @@ public class TUIController {
 	public void createrOperator() throws NullPointerException {
 //		try {
 		do {
+			System.out.println("Indtast det ønskede brugernavn");
+			oprNavn = scan.nextLine();
 			System.out.println("Indtast fornavn på den nye operatør");
 			forNavn = scan.nextLine();
 			System.out.println("Indtast efternavn på den nye operatør");
