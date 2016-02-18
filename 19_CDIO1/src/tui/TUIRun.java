@@ -89,6 +89,7 @@ public class TUIRun {
 
 			if(choice == 1){
 				System.out.println("Skift password.");
+				skiftKode(scan);
 			}
 			else if(choice == 2){
 				mainMenu(scan);
@@ -98,6 +99,15 @@ public class TUIRun {
 			}
 		}
 		while(choice > 2);
+	}
+
+	private void skiftKode(Scanner scan) {
+		oprLogin(scan);
+		System.out.println("Indtast din nye adgangskode");
+		String newpass = scan.nextLine();
+		System.out.println("Gentag din nye adgangskode");
+		String newpass2 = scan.nextLine();
+		
 	}
 
 	public void balancing(Scanner scan){
