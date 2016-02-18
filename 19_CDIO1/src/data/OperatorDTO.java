@@ -12,19 +12,18 @@ public class OperatorDTO {
 	List<OperatorDTO> operatorList;
 	List<String> cprList;
 	
-	public OperatorDTO(String forNavn, String efterNavn, String oprNavn, String cpr, int oprId) {
+	public OperatorDTO(String forNavn, String efterNavn, String cpr) {
 		oprNavn += forNavn+" ";
 		oprNavn += efterNavn;
 		this.cpr = cpr;
-		this.oprId = oprId;
-		this.oprNavn = oprNavn;
+		oprId++;
 	}
 	public OperatorDTO() {
 		
 	}
 	
-	public void createOperator(String forNavn, String efterNavn, String oprNavn, String cpr, int oprId) {
-		new OperatorDTO(forNavn, efterNavn, oprNavn, cpr, oprId);
+	public void createOperator(String forNavn, String efterNavn, String oprNavn) {
+		new OperatorDTO(forNavn, efterNavn, cpr);
 		operatorList.add(this);
 		cprList.add(cpr);
 		password = createTempPassword();

@@ -2,16 +2,19 @@ package tui;
 
 import java.util.Scanner;
 
+import data.OperatorDTO;
+
 public class TUIRun {
 
 	private TUIController cont = new TUIController();
 	private Scanner scan = new Scanner(System.in);	
 	private int choice;
 	private boolean loop = true;
+	private OperatorDTO odto;
 	
 	public TUIRun() {
 		mainMenu(scan);
-		
+		odto = new OperatorDTO();
 	}
 
 	public void mainMenu(Scanner scan){
@@ -60,8 +63,10 @@ public class TUIRun {
 			choice = scan.nextInt();
 
 			if(choice == 1){
-				if(loginSysAdmin())
+				if(loginSysAdmin()) {
 					cont.createrOperator();
+					
+				}
 			}
 			else if(choice == 2){
 				mainMenu(scan);
