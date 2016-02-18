@@ -4,11 +4,14 @@ import java.util.Scanner;
 
 public class TUIRun {
 
-	TUIController cont = new TUIController();
+	private TUIController cont = new TUIController();
+	private Scanner scan = new Scanner(System.in);	
+	private int choice;
+	private boolean loop = true;
 	
-		Scanner scan = new Scanner(System.in);
-		
-	int choice;
+	public TUIRun() {
+		mainMenu(scan);
+	}
 
 	public void mainMenu(Scanner scan){
 		System.out.println("Velkommen til 'applikation-navn'!\n");
@@ -31,14 +34,19 @@ public class TUIRun {
 				balancing(scan);
 			}
 			else if(choice == 4){
+				exit(scan);
 				System.out.println("Du har afsluttet applikation. På gensyn.");
 			}
 			else{
 				System.out.println("Du har indtastet et ikke gyldigt nummer. Prøv igen.");
 			}
 		}
-		while(choice > 4);
+		while(loop);
 		scan.close();
+	}
+
+	private void exit(Scanner scan) {
+		loop = false;
 	}
 
 	public void createUser(Scanner scan){
