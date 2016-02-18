@@ -105,8 +105,14 @@ public class TUIRun {
 		String newpass2;
 		String newpass;
 		do {
-			//Ændre oprLogin til at tage imod oprId & password
-			//Så den kan bruges til at ændre kode også.
+			 /*******************************************************
+			 * 						TO DO							*
+			 * 														*
+			 * Ændre oprLogin til at tage imod oprId & password		*
+			 * Så den kan bruges til at ændre kode også.			*
+			 * Få tilføjet special tegn til changePassword.			*
+			 *******************************************************/
+			
 		oprLogin(scan);
 		System.out.println("Indtast din nye adgangskode");
 		newpass = scan.nextLine();
