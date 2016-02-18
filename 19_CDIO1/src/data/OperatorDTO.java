@@ -1,5 +1,6 @@
 package data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class OperatorDTO {
@@ -48,6 +49,13 @@ public class OperatorDTO {
 	public String getPassword(String cpr) {
 		for(int i = 0; i < operatorList.size(); i++)
 			if(operatorList.get(i).cpr.equals(cpr))
+				return operatorList.get(i).password;
+		return null;
+	}
+	
+	public String getPassword(int oprId) {
+		for(int i = 0; i < operatorList.size(); i++)
+			if(operatorList.get(i).oprId == oprId)
 				return operatorList.get(i).password;
 		return null;
 	}
