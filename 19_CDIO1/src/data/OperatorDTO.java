@@ -13,6 +13,7 @@ public class OperatorDTO {
 	List<OperatorDTO> operatorList;
 	List<String> cprList;
 	
+	
 	public OperatorDTO() {
 		
 	}
@@ -69,6 +70,28 @@ public class OperatorDTO {
 	
 	public String getCPR() {
 		return cpr;
+	}
+
+	public boolean changePassword(String newpass) {
+		int capitalLetter = 0;
+		int smallLetter = 0;
+		int number = 0;
+		for(int i = 0; i < newpass.length(); i++){
+			if(newpass.charAt(i) > 'A' && newpass.charAt(i) < 'Z')
+				capitalLetter++;
+			if(newpass.charAt(i) > 'a' && newpass.charAt(i) < 'z')
+				smallLetter++;
+			if(newpass.charAt(i) > '0' && newpass.charAt(i) < '9')
+				number++;
+			
+			}
+			if(capitalLetter+smallLetter+number >= 3) {
+				password = newpass;
+				return true;
+			}
+
+			
+		return false;
 	}
 
 }

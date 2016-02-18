@@ -102,12 +102,23 @@ public class TUIRun {
 	}
 
 	private void skiftKode(Scanner scan) {
+		String newpass2;
+		String newpass;
+		do {
 		oprLogin(scan);
 		System.out.println("Indtast din nye adgangskode");
-		String newpass = scan.nextLine();
+		newpass = scan.nextLine();
 		System.out.println("Gentag din nye adgangskode");
-		String newpass2 = scan.nextLine();
-		
+		newpass2 = scan.nextLine();
+		if(newpass.equals(newpass2))
+			if(odto.changePassword(newpass));
+				
+			else
+				System.out.println("Der skal være minimum et stort bogstav, et lille bogstav og et tal i din kode. "
+						+ "Desuden skal den være minimum 6 karakterer lang.");
+		else
+			System.out.println("Koderne er ikke ens. Prøv igen.");
+	}while(!newpass.equals(newpass2));
 	}
 
 	public void balancing(Scanner scan){
