@@ -107,14 +107,11 @@ public class TUIRun {
 		String newpass2;
 		String newpass;
 		do {
-			 /*******************************************************
-			 * 						TO DO							*
-			 * 														*
-			 * Få lavet de sidste syso'er til oprId / password		*
-			 * Få tilføjet special tegn til changePassword.			*
-			 *******************************************************/
-			
-		passwordCheck(oprId, password);
+		System.out.println("Indtast bruger nr.");
+		int oprId = scan.nextInt();
+		System.out.println("Indtast din gamle adgangskode");
+		String password = scan.nextLine();
+		if(passwordCheck(oprId, password)) {
 		System.out.println("Indtast din nye adgangskode");
 		newpass = scan.nextLine();
 		System.out.println("Gentag din nye adgangskode");
@@ -127,6 +124,9 @@ public class TUIRun {
 						+ "Desuden skal den være minimum 6 karakterer lang.");
 		else
 			System.out.println("Koderne er ikke ens. Prøv igen.");
+		} else {
+			System.out.println("Bruger nr og password passer ikke sammen.");
+		}
 	}while(!newpass.equals(newpass2));
 	}
 
