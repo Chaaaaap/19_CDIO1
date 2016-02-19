@@ -104,8 +104,8 @@ public class TUIRun {
 	}
 
 	private void skiftKode(Scanner scan) {
-		String newpass2;
-		String newpass;
+		String newpass2 = "";
+		String newpass = " ";
 		do {
 		System.out.println("Indtast bruger nr.");
 		int oprId = scan.nextInt();
