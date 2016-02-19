@@ -113,7 +113,7 @@ public class TUIRun {
 			 * Få tilføjet special tegn til changePassword.			*
 			 *******************************************************/
 			
-		oprLogin(scan);
+		passwordCheck(oprId, password);
 		System.out.println("Indtast din nye adgangskode");
 		newpass = scan.nextLine();
 		System.out.println("Gentag din nye adgangskode");
@@ -161,13 +161,17 @@ public class TUIRun {
 		System.out.println("Password:");
 		password = scan.next();
 		
+		return passwordCheck(oprId, password);
+		
+	}
+	
+	private boolean passwordCheck(int oprId, String password) {
 		for(int i = 0; i < odto.getOperatorList().size(); i++)
 			if(odto.getOperatorList().get(i).getOprId() == oprId)
 				if(odto.getOperatorList().get(i).getPassword(oprId).equals(password))
 					return true;
 		
 		return false;
-		
 	}
 	
 	public double afvejning(Scanner scan) {
