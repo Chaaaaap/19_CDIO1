@@ -11,6 +11,8 @@ public class TUIRun {
 	private int choice;
 	private boolean loop = true;
 	private OperatorDTO odto;
+	private int oprId;
+	private String password;
 	
 	public TUIRun() {
 		mainMenu(scan);
@@ -164,7 +166,7 @@ public class TUIRun {
 		
 	}
 	
-	private boolean passwordCheck(int oprId, String password) {
+	public boolean passwordCheck(int oprId, String password) {
 		for(int i = 0; i < odto.getOperatorList().size(); i++)
 			if(odto.getOperatorList().get(i).getOprId() == oprId)
 				if(odto.getOperatorList().get(i).getPassword(oprId).equals(password))
@@ -197,7 +199,9 @@ public class TUIRun {
 		oprId = scan.nextInt();
 		System.out.println("Password:");
 		password = scan.next();
-
+		
+		scan.close();
+		
 		if(sysAdminOprId() == oprId && password.equals(sysAdminPassword())){
 			return true;
 		}
@@ -205,7 +209,9 @@ public class TUIRun {
 			System.out.println("Forkert bruger nr. eller password. Du bliver ført tilbage til foregående menu. \n");
 			createUser(scan);
 			return false;
+			
 		}
+		
 	}
 
 	public int sysAdminOprId(){
