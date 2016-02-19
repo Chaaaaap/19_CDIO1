@@ -108,8 +108,7 @@ public class TUIRun {
 			 /*******************************************************
 			 * 						TO DO							*
 			 * 														*
-			 * Ændre oprLogin til at tage imod oprId & password		*
-			 * Så den kan bruges til at ændre kode også.			*
+			 * Få lavet de sidste syso'er til oprId / password		*
 			 * Få tilføjet special tegn til changePassword.			*
 			 *******************************************************/
 			
