@@ -5,26 +5,28 @@ import java.util.List;
 
 public class OperatorDTO {
 	
-	int oprId;		//Skal automatisk tildeles en bruger ved oprettelse. Mellem 11-99
-	String oprNavn;	//Minimum 2 og max 20 karakterer.
-	String ini;		//2-3 karakterer til initialer.
-	String cpr;		//Skal skrives med bindestreg
-	String password;
-	List<OperatorDTO> operatorList;
-	List<String> cprList;
+	private int oprId;		//Skal automatisk tildeles en bruger ved oprettelse. Mellem 11-99
+	private String oprNavn;	//Minimum 2 og max 20 karakterer.
+	private String ini;		//2-3 karakterer til initialer.
+	private String cpr;		//Skal skrives med bindestreg
+	private String password;
+	private List<OperatorDTO> operatorList;
+	private List<String> cprList;
 	
 	
 	public OperatorDTO(String forNavn, String efterNavn, String cpr) {
 		oprNavn = forNavn;
 		oprNavn += efterNavn;
 		this.cpr = cpr;
+		ini = forNavn.charAt(0);
+		password = createTempPassword();
 	}
 	
-	public void createOperator(String forNavn, String efterNavn, String oprNavn) {
-		cprList.add(cpr);
-		password = createTempPassword();
-		
-	}
+//	public void createOperator(String forNavn, String efterNavn, String oprNavn) {
+//		cprList.add(cpr);
+//		password = createTempPassword();
+//		
+//	}
 
 	private String createTempPassword() {
 		// Opretter et midlertidigt password
