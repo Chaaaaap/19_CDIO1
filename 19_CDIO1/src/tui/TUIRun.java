@@ -66,7 +66,7 @@ public class TUIRun {
 
 			if(choice == 1){
 				if(loginSysAdmin()) {
-					cont.createrOperator();
+					cont.createrOperator(scan);
 
 				}
 			}
@@ -199,8 +199,6 @@ public class TUIRun {
 		oprId = scan.nextInt();
 		System.out.println("Password:");
 		password = scan.next();
-
-		scan.close();
 
 		if(sysAdminOprId() == oprId && password.equals(sysAdminPassword())){
 			return true;
