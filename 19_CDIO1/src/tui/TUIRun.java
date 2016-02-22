@@ -170,7 +170,6 @@ public class TUIRun {
 			if(oCont.getOperatoerList().get(i).getOprId() == oprId)
 				if(oCont.getOperatoerList().get(i).getPassword(oprId).equals(password))
 					return true;
-
 		return false;
 	}
 
