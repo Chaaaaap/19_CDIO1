@@ -23,11 +23,11 @@ public class TUIController {
 	public void createrOperator(Scanner scan) {
 		do {
 			System.out.println("Indtast fornavn på den nye operatør");
-			forNavn = scan.nextLine();
+			forNavn = scan.next();
 			System.out.println("Indtast efternavn på den nye operatør");
-			efterNavn = scan.nextLine();
+			efterNavn = scan.next();
 			System.out.println("Indtast CPR-nummer for operatøren");
-			cpr = scan.nextLine();
+			cpr = scan.next();
 			
 					if(cpr.length() < 11 || cpr.length() > 12) {
 						System.out.println("Fejl! Det indtastede CPR-nummer er ikke gyldigt. Det skal indtastes ddmmåå-xxxx");
