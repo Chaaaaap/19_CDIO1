@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OperatorDTO {
-	
-	private int oprId = 11;		//Skal automatisk tildeles en bruger ved oprettelse. Mellem 11-99
+	private int oprID = 11;
+	private int oprId;		//Skal automatisk tildeles en bruger ved oprettelse. Mellem 11-99
 	private String oprNavn;	//Minimum 2 og max 20 karakterer.
 	private String ini =  new String();		//2-3 karakterer til initialer.
 	private String cpr;		//Skal skrives med bindestreg
@@ -20,7 +20,8 @@ public class OperatorDTO {
 		this.cpr = cpr;
 		ini += forNavn.charAt(0) + efterNavn.charAt(0);
 		password = createTempPassword();
-		
+		oprId = oprID;
+		oprID++;
 		operatorList.add(this);
 	}
 	
