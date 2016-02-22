@@ -7,6 +7,8 @@ import interfaces.IOperatorDAO;
 
 public class OperatorController implements IOperatorDAO {
 	
+	private List<OperatorDTO> operatorList;
+	private List<String> cprList;
 	OperatorDTO data;
 	
 	public OperatorController() {
@@ -15,21 +17,21 @@ public class OperatorController implements IOperatorDAO {
 
 	@Override
 	public OperatorDTO getOperatoer(int oprId) {//throws DALException {
-		for(int i = 0; i < data.getOperatorList().size(); i++)
-			if(data.getOperatorList().get(i).getOprId() == oprId)
-				return data.getOperatorList().get(i);
+		for(int i = 0; i < operatorList.size(); i++)
+			if(operatorList.get(i).getOprId() == oprId)
+				return operatorList.get(i);
 		return null;
 	}
 
 	@Override
 	public List<OperatorDTO> getOperatoerList() throws DALException {
 		// TODO Auto-generated method stub
-		return data.getOperatorList();
+		return operatorList;
 	}
 
 	@Override
 	public void createOperatoer(OperatorDTO opr) throws DALException {
-		data.getOperatorList().add(opr);
+		operatorList.add(opr);
 	}
 
 	@Override
@@ -41,13 +43,13 @@ public class OperatorController implements IOperatorDAO {
 	@Override
 	public void deleteOperatoer(OperatorDTO opr) throws DALException {
 		// TODO Auto-generated method stub
-		data.getOperatorList().remove(opr);
+		operatorList.remove(opr);
 	}
 	
 	public boolean passwordCheck(String oprNavn, String password) {
-		for(int i = 0; i < data.getOperatorList().size(); i++)
-			if(data.getOperatorList().get(i).getOprNavn(oprNavn).equals(oprNavn)) {
-				if(data.getOperatorList().get(i).getPassword(oprNavn).equals(password))
+		for(int i = 0; i < operatorList.size(); i++)
+			if(operatorList.get(i).getOprNavn(oprNavn).equals(oprNavn)) {
+				if(operatorList.get(i).getPassword(oprNavn).equals(password))
 					return true;
 			}
 		return false;

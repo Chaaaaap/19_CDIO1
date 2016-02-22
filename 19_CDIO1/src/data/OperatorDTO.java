@@ -1,6 +1,5 @@
 package data;
 
-import java.util.List;
 
 public class OperatorDTO {
 	private int oprID = 11;
@@ -8,10 +7,7 @@ public class OperatorDTO {
 	private String oprNavn;	//Minimum 2 og max 20 karakterer.
 	private String ini =  new String();		//2-3 karakterer til initialer.
 	private String cpr;		//Skal skrives med bindestreg
-	private String password;
-	private List<OperatorDTO> operatorList;
-	private List<String> cprList;
-	
+	private String password;	
 	
 	public OperatorDTO(String forNavn, String efterNavn, String cpr) {
 		oprNavn = forNavn;
@@ -21,7 +17,6 @@ public class OperatorDTO {
 		password = createTempPassword();
 		oprId = oprID;
 		oprID++;
-		operatorList.add(this);
 	}
 	
 	public OperatorDTO() {
@@ -39,44 +34,44 @@ public class OperatorDTO {
 		return "Test1234";
 	}
 
-	public List<OperatorDTO> getOperatorList() {
-		return operatorList;
-	}
-	
-	public OperatorDTO getOperator(String cpr) {
-		for(int i = 0; i < operatorList.size(); i++)
-			if(operatorList.get(i).cpr.equals(cpr))
-				return operatorList.get(i);
-		return null;
-	}
-	
-	public String getOprNavn(String cpr) {
-		for(int i = 0; i < operatorList.size(); i++)
-			if(operatorList.get(i).cpr.equals(cpr))
-				return oprNavn;
-		return null;
-	}
-	
-	public String getPassword(String cpr) {
-		for(int i = 0; i < operatorList.size(); i++)
-			if(operatorList.get(i).cpr.equals(cpr))
-				return operatorList.get(i).password;
-		return null;
-	}
-	
-	public String getPassword(int oprId) {
-		for(int i = 0; i < operatorList.size(); i++)
-			if(operatorList.get(i).oprId == oprId)
-				return operatorList.get(i).password;
-		return null;
-	}
-	
-	public int getOprId() {
-		for(int i = 0; i < operatorList.size(); i++)
-			if(operatorList.get(i).oprId == oprId)
-				return oprId;
-		return -1;
-	}
+//	public List<OperatorDTO> getOperatorList() {
+//		return operatorList;
+//	}
+//	
+//	public OperatorDTO getOperator(String cpr) {
+//		for(int i = 0; i < operatorList.size(); i++)
+//			if(operatorList.get(i).cpr.equals(cpr))
+//				return operatorList.get(i);
+//		return null;
+//	}
+//	
+//	public String getOprNavn(String cpr) {
+//		for(int i = 0; i < operatorList.size(); i++)
+//			if(operatorList.get(i).cpr.equals(cpr))
+//				return oprNavn;
+//		return null;
+//	}
+//	
+//	public String getPassword(String cpr) {
+//		for(int i = 0; i < operatorList.size(); i++)
+//			if(operatorList.get(i).cpr.equals(cpr))
+//				return operatorList.get(i).password;
+//		return null;
+//	}
+//	
+//	public String getPassword(int oprId) {
+//		for(int i = 0; i < operatorList.size(); i++)
+//			if(operatorList.get(i).oprId == oprId)
+//				return operatorList.get(i).password;
+//		return null;
+//	}
+//	
+//	public int getOprId() {
+//		for(int i = 0; i < operatorList.size(); i++)
+//			if(operatorList.get(i).oprId == oprId)
+//				return oprId;
+//		return -1;
+//	}
 	
 	public String getCPR() {
 		return cpr;
@@ -88,11 +83,11 @@ public class OperatorDTO {
 		int number = 0;
 		for(int i = 0; i < newpass.length(); i++){
 			if(newpass.charAt(i) > 'A' && newpass.charAt(i) < 'Z')
-				capitalLetter++;
+				capitalLetter = 1;
 			if(newpass.charAt(i) > 'a' && newpass.charAt(i) < 'z')
-				smallLetter++;
+				smallLetter = 1;
 			if(newpass.charAt(i) > '0' && newpass.charAt(i) < '9')
-				number++;
+				number = 1;
 			
 			}
 			if(capitalLetter+smallLetter+number >= 3) {
