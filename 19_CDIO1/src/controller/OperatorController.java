@@ -11,7 +11,6 @@ import interfaces.IOperatorDAO;
 public class OperatorController implements IOperatorDAO {
 
 	private Map<Integer, OperatorDTO> operatorList = new HashMap<>();
-	OperatorDTO data;
 
 	public OperatorController() {
 
@@ -60,8 +59,9 @@ public class OperatorController implements IOperatorDAO {
 		return false;
 	}
 
-	public boolean changePassword(String newpass) {
-		if(data.changePassword(newpass))
+	public boolean changePassword(int oprId, String newpass) {
+		OperatorDTO operator = operatorList.get(oprId);
+		if(operator.changePassword(newpass))
 			return true;
 		else
 			return false;

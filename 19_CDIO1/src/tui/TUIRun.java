@@ -117,13 +117,13 @@ public class TUIRun {
 				newpass = scan.next();
 				System.out.println("Gentag din nye adgangskode");
 				newpass2 = scan.next();
-				if(newpass.equals(newpass2))
-					if(oCont.changePassword(newpass));
+				if(newpass.equals(newpass2)) {
+					if(oCont.changePassword(oprId, newpass));
 
 					else
 						throw new DALException( "Der skal være minimum et stort bogstav, et lille bogstav og et tal i din kode. "
 								+ "Desuden skal den være minimum 6 karakterer lang.");
-				else
+				} else
 					throw new DALException("Koderne er ikke ens. Prøv igen.");
 			} else {
 				throw new DALException("Bruger nr og password passer ikke sammen.");
