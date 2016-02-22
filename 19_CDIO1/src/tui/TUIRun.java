@@ -42,7 +42,7 @@ public class TUIRun {
 				balancing(scan);
 			}
 			else if(choice == 4){
-				exit(scan);
+				exit();
 				System.out.println("Du har afsluttet applikation. På gensyn.");
 			}
 			else{
@@ -50,10 +50,9 @@ public class TUIRun {
 			}
 		}
 		while(loop);
-		scan.close();
 	}
 
-	private void exit(Scanner scan) {
+	private void exit() {
 		loop = false;
 	}
 
@@ -66,7 +65,7 @@ public class TUIRun {
 			choice = scan.nextInt();
 
 			if(choice == 1){
-				if(loginSysAdmin()) {
+				if(loginSysAdmin(scan)) {
 					cont.createrOperator(scan);
 
 				}
@@ -190,8 +189,7 @@ public class TUIRun {
 
 	}
 
-	public boolean loginSysAdmin() throws DALException{
-		Scanner scan = new Scanner(System.in);
+	public boolean loginSysAdmin(Scanner scan) throws DALException{
 		int oprId;
 		String password;
 		System.out.println("Login som sysadmin.");
