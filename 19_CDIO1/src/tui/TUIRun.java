@@ -12,8 +12,6 @@ public class TUIRun {
 	private int choice;
 	private boolean loop = true;
 	private OperatorDTO odto;
-	private int oprId;
-	private String password;
 
 	public TUIRun() throws DALException {
 		mainMenu(scan);

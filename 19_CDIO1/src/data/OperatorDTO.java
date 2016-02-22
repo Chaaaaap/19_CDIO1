@@ -34,44 +34,27 @@ public class OperatorDTO {
 		return "Test1234";
 	}
 
-//	public List<OperatorDTO> getOperatorList() {
-//		return operatorList;
-//	}
-//	
+	
 //	public OperatorDTO getOperator(String cpr) {
 //		for(int i = 0; i < operatorList.size(); i++)
 //			if(operatorList.get(i).cpr.equals(cpr))
 //				return operatorList.get(i);
 //		return null;
 //	}
-//	
-//	public String getOprNavn(String cpr) {
-//		for(int i = 0; i < operatorList.size(); i++)
-//			if(operatorList.get(i).cpr.equals(cpr))
-//				return oprNavn;
-//		return null;
-//	}
-//	
-//	public String getPassword(String cpr) {
-//		for(int i = 0; i < operatorList.size(); i++)
-//			if(operatorList.get(i).cpr.equals(cpr))
-//				return operatorList.get(i).password;
-//		return null;
-//	}
-//	
-//	public String getPassword(int oprId) {
-//		for(int i = 0; i < operatorList.size(); i++)
-//			if(operatorList.get(i).oprId == oprId)
-//				return operatorList.get(i).password;
-//		return null;
-//	}
-//	
-//	public int getOprId() {
-//		for(int i = 0; i < operatorList.size(); i++)
-//			if(operatorList.get(i).oprId == oprId)
-//				return oprId;
-//		return -1;
-//	}
+	
+	public String getOprNavn(String cpr) {
+		return oprNavn;
+	}
+	
+	public String getPassword(String cpr) {
+		return password;
+	}
+	
+	public String getPassword(int oprId) {
+		return password;
+	}
+	
+
 	
 	public String getCPR() {
 		return cpr;
@@ -97,6 +80,10 @@ public class OperatorDTO {
 
 			
 		return false;
+	}
+
+	public int getOprId() {
+		return oprId;
 	}
 
 }
