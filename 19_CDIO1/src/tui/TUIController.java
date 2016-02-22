@@ -6,21 +6,16 @@ import data.OperatorDTO;
 
 public class TUIController {
 
-	private Scanner scan;
 	boolean fejl;
-	private OperatorDTO ODTO;
 	private boolean alreadyExist;
 	private String forNavn;
 	private String efterNavn;
 	private String cpr;
-	private String oprNavn;
 
 	public TUIController() {
-		scan = new Scanner(System.in);
-		ODTO = new OperatorDTO();
 	}
 
-	public void createrOperator(Scanner scan) {
+	public OperatorDTO createrOperator(Scanner scan) {
 		do {
 			System.out.println("Indtast fornavn på den nye operatør");
 			forNavn = scan.next();
@@ -39,7 +34,9 @@ public class TUIController {
 						fejl = false;
 					} 
 		}while(fejl);
+		OperatorDTO operator = new OperatorDTO(forNavn, efterNavn, cpr);
 		
+		return operator;
 	}
 }
 

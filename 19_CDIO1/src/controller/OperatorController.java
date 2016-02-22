@@ -1,43 +1,48 @@
 package controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import data.OperatorDTO;
 import interfaces.IOperatorDAO;
 
 public class OperatorController implements IOperatorDAO {
-	
-	private List<OperatorDTO> operatorList;
-	private List<String> cprList;
+
+	private Map<Integer, OperatorDTO> operatorList = new HashMap<>();
 	OperatorDTO data;
-	
+
 	public OperatorController() {
-		
+
 	}
 
 	@Override
-	public OperatorDTO getOperatoer(int oprId) {//throws DALException {
-		for(int i = 0; i < operatorList.size(); i++)
-			if(operatorList.get(i).getOprId() == oprId)
-				return operatorList.get(i);
-		return null;
+	public OperatorDTO getOperatoer(int oprId) throws DALException {
+		OperatorDTO operator = operatorList.get(oprId);
+		if (operator != null) return operator;
+		throw new DALException("han findes ikke - eller hun findes ikke - eller brugeren");
+
 	}
 
 	@Override
 	public List<OperatorDTO> getOperatoerList() throws DALException {
-		// TODO Auto-generated method stub
-		return operatorList;
+		List<OperatorDTO> list = new ArrayList<>();
+		list.addAll(operatorList.values());
+		return list;
 	}
 
 	@Override
 	public void createOperatoer(OperatorDTO opr) throws DALException {
-		operatorList.add(opr);
+		if (operatorList.get(opr.getOprId())!=null) throw new DALException("Brugeren findes Allerede");
+		operatorList.put(opr.getOprId(), opr);
 	}
 
 	@Override
 	public void updateOperatoer(OperatorDTO opr) throws DALException {
-		// TODO Auto-generated method stub
-		
+		if (operatorList.get(opr.getOprId())==null) throw new DALException("Brugeren findes ikke");
+		operatorList.put(opr.getOprId(), opr);
+
 	}
 
 	@Override
@@ -45,7 +50,7 @@ public class OperatorController implements IOperatorDAO {
 		// TODO Auto-generated method stub
 		operatorList.remove(opr);
 	}
-	
+
 	public boolean passwordCheck(String oprNavn, String password) {
 		for(int i = 0; i < operatorList.size(); i++)
 			if(operatorList.get(i).getOprNavn(oprNavn).equals(oprNavn)) {
@@ -53,6 +58,13 @@ public class OperatorController implements IOperatorDAO {
 					return true;
 			}
 		return false;
+	}
+
+	public boolean changePassword(String newpass) {
+		if(data.changePassword(newpass))
+			return true;
+		else
+			return false;
 	}
 
 }

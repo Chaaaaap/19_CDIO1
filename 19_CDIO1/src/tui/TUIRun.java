@@ -2,6 +2,7 @@ package tui;
 
 import java.util.Scanner;
 
+import controller.OperatorController;
 import data.OperatorDTO;
 import interfaces.IOperatorDAO.DALException;
 
@@ -11,11 +12,11 @@ public class TUIRun {
 	private Scanner scan = new Scanner(System.in);	
 	private int choice;
 	private boolean loop = true;
-	private OperatorDTO odto;
+	private OperatorController oCont;
 
 	public TUIRun() throws DALException {
 		mainMenu(scan);
-		odto = new OperatorDTO();
+		oCont = new OperatorController();
 	}
 
 	public void mainMenu(Scanner scan) throws DALException{
@@ -64,7 +65,7 @@ public class TUIRun {
 
 			if(choice == 1){
 				if(loginSysAdmin(scan)) {
-					cont.createrOperator(scan);
+					oCont.createOperatoer(cont.createrOperator(scan));
 
 				}
 			}
@@ -115,7 +116,7 @@ public class TUIRun {
 				System.out.println("Gentag din nye adgangskode");
 				newpass2 = scan.nextLine();
 				if(newpass.equals(newpass2))
-					if(odto.changePassword(newpass));
+					if(oCont.changePassword(newpass));
 
 					else
 						throw new DALException( "Der skal være minimum et stort bogstav, et lille bogstav og et tal i din kode. "
@@ -151,7 +152,7 @@ public class TUIRun {
 		while(choice > 2);
 	}
 
-	public boolean oprLogin(Scanner scan) {
+	public boolean oprLogin(Scanner scan) throws DALException {
 		String password;
 		int oprId;
 
@@ -164,10 +165,10 @@ public class TUIRun {
 
 	}
 
-	public boolean passwordCheck(int oprId, String password) {
-		for(int i = 0; i < odto.getOperatorList().size(); i++)
-			if(odto.getOperatorList().get(i).getOprId() == oprId)
-				if(odto.getOperatorList().get(i).getPassword(oprId).equals(password))
+	public boolean passwordCheck(int oprId, String password) throws DALException {
+		for(int i = 0; i < oCont.getOperatoerList().size(); i++)
+			if(oCont.getOperatoerList().get(i).getOprId() == oprId)
+				if(oCont.getOperatoerList().get(i).getPassword(oprId).equals(password))
 					return true;
 
 		return false;
