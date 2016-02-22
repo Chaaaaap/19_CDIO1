@@ -8,7 +8,7 @@ public class OperatorDTO {
 	private String ini =  new String();		//2-3 karakterer til initialer.
 	private String cpr;		//Skal skrives med bindestreg
 	private String password;	
-	
+
 	public OperatorDTO(String forNavn, String efterNavn, String cpr) {
 		oprNavn = forNavn;
 		oprNavn += efterNavn;
@@ -18,44 +18,44 @@ public class OperatorDTO {
 		oprId = oprID;
 		oprID++;
 	}
-	
+
 	public OperatorDTO() {
-		
+
 	}
-	
-//	public void createOperator(String forNavn, String efterNavn, String oprNavn) {
-//		cprList.add(cpr);
-//		password = createTempPassword();
-//		
-//	}
+
+	//	public void createOperator(String forNavn, String efterNavn, String oprNavn) {
+	//		cprList.add(cpr);
+	//		password = createTempPassword();
+	//		
+	//	}
 
 	private String createTempPassword() {
 		// Opretter et midlertidigt password
 		return "Test1234";
 	}
 
-	
-//	public OperatorDTO getOperator(String cpr) {
-//		for(int i = 0; i < operatorList.size(); i++)
-//			if(operatorList.get(i).cpr.equals(cpr))
-//				return operatorList.get(i);
-//		return null;
-//	}
-	
+
+	//	public OperatorDTO getOperator(String cpr) {
+	//		for(int i = 0; i < operatorList.size(); i++)
+	//			if(operatorList.get(i).cpr.equals(cpr))
+	//				return operatorList.get(i);
+	//		return null;
+	//	}
+
 	public String getOprNavn(String cpr) {
 		return oprNavn;
 	}
-	
+
 	public String getPassword(String cpr) {
 		return password;
 	}
-	
+
 	public String getPassword(int oprId) {
 		return password;
 	}
-	
 
-	
+
+
 	public String getCPR() {
 		return cpr;
 	}
@@ -65,20 +65,22 @@ public class OperatorDTO {
 		int smallLetter = 0;
 		int number = 0;
 		for(int i = 0; i < newpass.length(); i++){
-			if(newpass.charAt(i) > 'A' && newpass.charAt(i) < 'Z')
+			if(newpass.charAt(i) >= 'A' && newpass.charAt(i) <= 'Z') {
 				capitalLetter = 1;
-			if(newpass.charAt(i) > 'a' && newpass.charAt(i) < 'z')
+			}
+			if(newpass.charAt(i) >= 'a' && newpass.charAt(i) <= 'z') {
 				smallLetter = 1;
-			if(newpass.charAt(i) > '0' && newpass.charAt(i) < '9')
+			}
+			if(newpass.charAt(i) >= '0' && newpass.charAt(i) <= '9'){
 				number = 1;
-			
 			}
-			if(capitalLetter+smallLetter+number >= 3) {
-				password = newpass;
-				return true;
-			}
+		}
+		if(capitalLetter+smallLetter+number >= 3) {
+			password = newpass;
+			return true;
+		}
 
-			
+
 		return false;
 	}
 
