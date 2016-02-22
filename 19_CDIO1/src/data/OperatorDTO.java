@@ -19,28 +19,10 @@ public class OperatorDTO {
 		oprID++;
 	}
 
-	public OperatorDTO() {
-
-	}
-
-	//	public void createOperator(String forNavn, String efterNavn, String oprNavn) {
-	//		cprList.add(cpr);
-	//		password = createTempPassword();
-	//		
-	//	}
-
 	private String createTempPassword() {
 		// Opretter et midlertidigt password
 		return "Test1234";
 	}
-
-
-	//	public OperatorDTO getOperator(String cpr) {
-	//		for(int i = 0; i < operatorList.size(); i++)
-	//			if(operatorList.get(i).cpr.equals(cpr))
-	//				return operatorList.get(i);
-	//		return null;
-	//	}
 
 	public String getOprNavn(String cpr) {
 		return oprNavn;
@@ -53,8 +35,6 @@ public class OperatorDTO {
 	public String getPassword(int oprId) {
 		return password;
 	}
-
-
 
 	public String getCPR() {
 		return cpr;
@@ -79,8 +59,6 @@ public class OperatorDTO {
 			password = newpass;
 			return true;
 		}
-
-
 		return false;
 	}
 
