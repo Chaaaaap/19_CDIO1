@@ -12,6 +12,9 @@ public interface IOperatorDAO {
 		* Den ville meget gerne have et serienummer så det har den fået.*
 		****************************************************************/
 		private static final long serialVersionUID = 1L;
+		public DALException(String msg) {
+			super(msg);
+		}
 
 	}
 

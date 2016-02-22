@@ -3,6 +3,7 @@ package tui;
 import java.util.Scanner;
 
 import data.OperatorDTO;
+import interfaces.IOperatorDAO.DALException;
 
 public class TUIRun {
 
@@ -14,12 +15,12 @@ public class TUIRun {
 	private int oprId;
 	private String password;
 
-	public TUIRun() {
+	public TUIRun() throws DALException {
 		mainMenu(scan);
 		odto = new OperatorDTO();
 	}
 
-	public void mainMenu(Scanner scan){
+	public void mainMenu(Scanner scan) throws DALException{
 		System.out.println("Velkommen til 'applikation-navn'!\n");
 
 		do{
@@ -56,7 +57,7 @@ public class TUIRun {
 		loop = false;
 	}
 
-	public void createUser(Scanner scan){
+	public void createUser(Scanner scan) throws DALException{
 		System.out.println("Du har nu følgende valgmuligheder:\n"
 				+ "1. Opret ny bruger.\n"
 				+ "2. Gå tilbage.\n"
@@ -81,7 +82,7 @@ public class TUIRun {
 		while(choice > 2);
 	}
 
-	public void changePassword(Scanner scan){
+	public void changePassword(Scanner scan) throws DALException{
 		System.out.println("Du har nu følgende valgmuligheder:\n"
 				+ "1. Skift password.\n"
 				+ "2. Gå tilbage.\n"
@@ -103,7 +104,7 @@ public class TUIRun {
 		while(choice > 2);
 	}
 
-	private void skiftKode(Scanner scan) {
+	private void skiftKode(Scanner scan) throws DALException {
 		String newpass2 = "";
 		String newpass = " ";
 		do {
@@ -120,17 +121,17 @@ public class TUIRun {
 					if(odto.changePassword(newpass));
 
 					else
-						System.out.println("Der skal være minimum et stort bogstav, et lille bogstav og et tal i din kode. "
+						throw new DALException( "Der skal være minimum et stort bogstav, et lille bogstav og et tal i din kode. "
 								+ "Desuden skal den være minimum 6 karakterer lang.");
 				else
-					System.out.println("Koderne er ikke ens. Prøv igen.");
+					throw new DALException("Koderne er ikke ens. Prøv igen.");
 			} else {
-				System.out.println("Bruger nr og password passer ikke sammen.");
+				throw new DALException("Bruger nr og password passer ikke sammen.");
 			}
 		}while(!newpass.equals(newpass2));
 	}
 
-	public void balancing(Scanner scan){
+	public void balancing(Scanner scan) throws DALException{
 		System.out.println("Afvejning er kun tilladt for oprettede brugere.\nDu har nu følgende valgmuligheder:\n"
 				+ "1. Login.\n"
 				+ "2. Gå tilbage.\n"
@@ -189,7 +190,7 @@ public class TUIRun {
 
 	}
 
-	public boolean loginSysAdmin(){
+	public boolean loginSysAdmin() throws DALException{
 		Scanner scan = new Scanner(System.in);
 		int oprId;
 		String password;

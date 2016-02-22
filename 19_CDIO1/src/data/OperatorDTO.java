@@ -7,7 +7,7 @@ public class OperatorDTO {
 	
 	private int oprId;		//Skal automatisk tildeles en bruger ved oprettelse. Mellem 11-99
 	private String oprNavn;	//Minimum 2 og max 20 karakterer.
-	private String ini;		//2-3 karakterer til initialer.
+	private String ini =  new String();		//2-3 karakterer til initialer.
 	private String cpr;		//Skal skrives med bindestreg
 	private String password;
 	private List<OperatorDTO> operatorList;
@@ -18,8 +18,12 @@ public class OperatorDTO {
 		oprNavn = forNavn;
 		oprNavn += efterNavn;
 		this.cpr = cpr;
-		ini = forNavn.charAt(0);
+		ini += forNavn.charAt(0) + efterNavn.charAt(0);
 		password = createTempPassword();
+	}
+	
+	public OperatorDTO() {
+		
 	}
 	
 //	public void createOperator(String forNavn, String efterNavn, String oprNavn) {
