@@ -51,7 +51,6 @@ public class OperatorController implements IOperatorDAO {
 					return true;
 			}
 		return false;
-				
 	}
 
 }
