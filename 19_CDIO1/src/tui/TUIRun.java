@@ -175,7 +175,7 @@ public class TUIRun {
 		return false;
 	}
 
-	public double afvejning(Scanner scan) {
+	public double afvejning(Scanner scan) throws DALException {
 
 		System.out.println("Afvejning.\n");
 		System.out.println("Indtast emballage vægt i kg.");
