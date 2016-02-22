@@ -3,20 +3,21 @@ package tui;
 import java.util.Scanner;
 
 import controller.OperatorController;
-import data.OperatorDTO;
 import interfaces.IOperatorDAO.DALException;
 
 public class TUIRun {
 
-	private TUIController cont = new TUIController();
-	private Scanner scan = new Scanner(System.in);	
+	private TUIController tCont;
+	private Scanner scan;	
 	private int choice;
 	private boolean loop = true;
 	private OperatorController oCont;
 
 	public TUIRun() throws DALException {
-		mainMenu(scan);
+		tCont = new TUIController();
+		scan =  new Scanner(System.in);
 		oCont = new OperatorController();
+		mainMenu(scan);
 	}
 
 	public void mainMenu(Scanner scan) throws DALException{
@@ -65,7 +66,8 @@ public class TUIRun {
 
 			if(choice == 1){
 				if(loginSysAdmin(scan)) {
-					oCont.createOperatoer(cont.createrOperator(scan));
+					System.out.println(oCont + "" + tCont);
+					oCont.createOperatoer(tCont.createrOperator(scan));
 
 				}
 			}
@@ -109,12 +111,12 @@ public class TUIRun {
 			System.out.println("Indtast bruger nr.");
 			int oprId = scan.nextInt();
 			System.out.println("Indtast din gamle adgangskode");
-			String password = scan.nextLine();
+			String password = scan.next();
 			if(passwordCheck(oprId, password)) {
 				System.out.println("Indtast din nye adgangskode");
-				newpass = scan.nextLine();
+				newpass = scan.next();
 				System.out.println("Gentag din nye adgangskode");
-				newpass2 = scan.nextLine();
+				newpass2 = scan.next();
 				if(newpass.equals(newpass2))
 					if(oCont.changePassword(newpass));
 
