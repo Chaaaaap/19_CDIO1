@@ -3,6 +3,7 @@ package tui;
 import java.util.Scanner;
 
 import data.OperatorDTO;
+import interfaces.IOperatorDAO.DALException;
 
 public class TUIController {
 
@@ -15,27 +16,23 @@ public class TUIController {
 	public TUIController() {
 	}
 
-	public OperatorDTO createrOperator(Scanner scan) {
-		do {
-			System.out.println("Indtast fornavn på den nye operatør");
-			forNavn = scan.next();
-			System.out.println("Indtast efternavn på den nye operatør");
-			efterNavn = scan.next();
-			System.out.println("Indtast CPR-nummer for operatøren");
-			cpr = scan.next();
-			
-					if(cpr.length() < 11 || cpr.length() > 12) {
-						System.out.println("Fejl! Det indtastede CPR-nummer er ikke gyldigt. Det skal indtastes ddmmåå-xxxx");
-						fejl = true;
-					} else if(alreadyExist) {
-						System.out.println("Fejl! Det indtastede CPR-nummer er allerede tilknyttet en bruger!");
-						fejl = true;
-					} else {
-						fejl = false;
-					} 
-		}while(fejl);
+	public OperatorDTO createrOperator(Scanner scan) throws DALException {
+
+		System.out.println("Indtast fornavn på den nye operatør");
+		forNavn = scan.next();
+		System.out.println("Indtast efternavn på den nye operatør");
+		efterNavn = scan.next();
+		System.out.println("Indtast CPR-nummer for operatøren");
+		cpr = scan.next();
+
+		if(cpr.length() < 11 || cpr.length() > 12) {
+			throw new DALException("Fejl! Det indtastede CPR-nummer er ikke gyldigt. Det skal indtastes ddmmåå-xxxx");
+		} else if(alreadyExist) {
+			throw new DALException("Fejl! Det indtastede CPR-nummer er allerede tilknyttet en bruger!");
+		}
+
 		OperatorDTO operator = new OperatorDTO(forNavn, efterNavn, cpr);
-		
+
 		return operator;
 	}
 }

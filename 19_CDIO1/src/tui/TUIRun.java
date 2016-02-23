@@ -57,17 +57,22 @@ public class TUIRun {
 	}
 
 	public void createUser(Scanner scan) throws DALException{
-		System.out.println("Du har nu følgende valgmuligheder:\n"
-				+ "1. Opret ny bruger.\n"
-				+ "2. Gå tilbage.\n"
-				+ "Indtast et nummer mellem 1-2:");
+		
 		do{
+			System.out.println("Du har nu følgende valgmuligheder:\n"
+					+ "1. Opret ny bruger.\n"
+					+ "2. Gå tilbage.\n"
+					+ "Indtast et nummer mellem 1-2:");
 			choice = scan.nextInt();
 
 			if(choice == 1){
 				if(loginSysAdmin(scan)) {
+					try {
 					oCont.createOperatoer(tCont.createrOperator(scan));
-
+					} catch(DALException e) {
+						System.out.println(e.getMessage());
+						loop = true;
+					}
 				}
 			}
 			else if(choice == 2){
@@ -78,7 +83,7 @@ public class TUIRun {
 			}
 
 		}
-		while(choice > 2);
+		while(loop);
 	}
 
 	public void changePassword(Scanner scan) throws DALException{
