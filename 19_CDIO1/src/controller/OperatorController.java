@@ -13,6 +13,8 @@ public class OperatorController implements IOperatorDAO {
 	private Map<Integer, OperatorDTO> operatorList = new HashMap<>();
 
 	public OperatorController() throws DALException {
+		OperatorDTO sysAdmin = new OperatorDTO("Sys", "Admin", "999999-9999");
+		createOperatoer(sysAdmin);
 		OperatorDTO operator1 = new OperatorDTO("Mikkel", "Hansen", "123456-1233");
 		createOperatoer(operator1);
 		OperatorDTO operator2 = new OperatorDTO("Silas", "Stryhn", "654321-4321");
