@@ -13,13 +13,17 @@ public class OperatorController implements IOperatorDAO {
 	private Map<Integer, OperatorDTO> operatorList = new HashMap<>();
 
 	public OperatorController() throws DALException {
+		//oprId 10
 		OperatorDTO sysAdmin = new OperatorDTO("Sys", "Admin", "999999-9999");
 		createOperatoer(sysAdmin);
 		sysAdmin.changePassword("Abc02324");
+		//oprId 11
 		OperatorDTO operator1 = new OperatorDTO("Mikkel", "Hansen", "123456-1233");
 		createOperatoer(operator1);
+		//oprId 12
 		OperatorDTO operator2 = new OperatorDTO("Silas", "Stryhn", "654321-4321");
 		createOperatoer(operator2);
+		//oprId 13
 		OperatorDTO operator3 = new OperatorDTO("Frank", "Thomsen", "124578-1285");
 		createOperatoer(operator3);
 	}
