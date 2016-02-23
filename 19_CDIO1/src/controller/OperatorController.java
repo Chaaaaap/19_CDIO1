@@ -12,8 +12,13 @@ public class OperatorController implements IOperatorDAO {
 
 	private Map<Integer, OperatorDTO> operatorList = new HashMap<>();
 
-	public OperatorController() {
-
+	public OperatorController() throws DALException {
+		OperatorDTO operator1 = new OperatorDTO("Mikkel", "Hansen", "123456-1233");
+		createOperatoer(operator1);
+		OperatorDTO operator2 = new OperatorDTO("Silas", "Stryhn", "654321-4321");
+		createOperatoer(operator2);
+		OperatorDTO operator3 = new OperatorDTO("Frank", "Thomsen", "124578-1285");
+		createOperatoer(operator3);
 	}
 
 	@Override
