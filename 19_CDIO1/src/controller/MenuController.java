@@ -18,7 +18,6 @@ public class MenuController implements IMenuController {
 		tCont = new TUIController();
 		scan =  new Scanner(System.in);
 		oCont = new OperatorController();
-		mainMenu(scan);
 	}
 
 	public void mainMenu(Scanner scan) throws DALException{
