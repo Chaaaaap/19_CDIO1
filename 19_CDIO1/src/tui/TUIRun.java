@@ -66,7 +66,6 @@ public class TUIRun {
 
 			if(choice == 1){
 				if(loginSysAdmin(scan)) {
-					System.out.println(oCont + "" + tCont);
 					oCont.createOperatoer(tCont.createrOperator(scan));
 
 				}
