@@ -8,7 +8,6 @@ import interfaces.IOperatorDAO.DALException;
 
 public class TUIController {
 
-	boolean fejl;
 	private boolean alreadyExist;
 	private String forNavn;
 	private String efterNavn;
