@@ -15,13 +15,13 @@ public class OperatorController implements IOperatorDAO {
 	public OperatorController() throws DALException {
 		OperatorDTO sysAdmin = new OperatorDTO("Sys", "Admin", "999999-9999");
 		createOperatoer(sysAdmin);
+		sysAdmin.changePassword("Abc02324");
 		OperatorDTO operator1 = new OperatorDTO("Mikkel", "Hansen", "123456-1233");
 		createOperatoer(operator1);
 		OperatorDTO operator2 = new OperatorDTO("Silas", "Stryhn", "654321-4321");
 		createOperatoer(operator2);
 		OperatorDTO operator3 = new OperatorDTO("Frank", "Thomsen", "124578-1285");
 		createOperatoer(operator3);
-		sysAdmin.changePassword("Abc02324");
 	}
 
 	@Override
