@@ -83,16 +83,22 @@ public class TUIRun {
 	}
 
 	public void changePassword(Scanner scan) throws DALException{
-		System.out.println("Du har nu følgende valgmuligheder:\n"
-				+ "1. Skift password.\n"
-				+ "2. Gå tilbage.\n"
-				+ "Indtast et nummer mellem 1-2:");
+		
 		do{
+			System.out.println("Du har nu følgende valgmuligheder:\n"
+					+ "1. Skift password.\n"
+					+ "2. Gå tilbage.\n"
+					+ "Indtast et nummer mellem 1-2:");
 			choice = scan.nextInt();
 
 			if(choice == 1){
 				System.out.println("Skift password.");
+				try {
 				skiftKode(scan);
+				} catch(DALException e) {
+					System.out.println(e.getMessage());
+					loop = true;
+				}
 			}
 			else if(choice == 2){
 				mainMenu(scan);
@@ -101,7 +107,7 @@ public class TUIRun {
 				System.out.println("Du har indtastet et ikke gyldigt nummer. Prøv igen.");
 			}
 		}
-		while(choice > 2);
+		while(loop);
 	}
 
 	private void skiftKode(Scanner scan) throws DALException {
