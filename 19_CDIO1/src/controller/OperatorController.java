@@ -21,6 +21,7 @@ public class OperatorController implements IOperatorDAO {
 		createOperatoer(operator2);
 		OperatorDTO operator3 = new OperatorDTO("Frank", "Thomsen", "124578-1285");
 		createOperatoer(operator3);
+		sysAdmin.changePassword("Abc02324");
 	}
 
 	@Override
