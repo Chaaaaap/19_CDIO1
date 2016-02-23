@@ -1,10 +1,10 @@
 package main;
 
+import controller.MenuController;
 import interfaces.IOperatorDAO.DALException;
-import tui.TUIRun;
 
 public class Main {
 	public static void main(String[] args) throws DALException {
-		new TUIRun();
+		new MenuController();
 	}
 }

@@ -1,11 +1,12 @@
-package tui;
+package controller;
 
 import java.util.Scanner;
 
-import controller.OperatorController;
+import interfaces.IMenuController;
 import interfaces.IOperatorDAO.DALException;
+import tui.TUIController;
 
-public class TUIRun {
+public class MenuController implements IMenuController {
 
 	private TUIController tCont;
 	private Scanner scan;	
@@ -13,7 +14,7 @@ public class TUIRun {
 	private boolean loop = true;
 	private OperatorController oCont;
 
-	public TUIRun() throws DALException {
+	public MenuController() throws DALException {
 		tCont = new TUIController();
 		scan =  new Scanner(System.in);
 		oCont = new OperatorController();
@@ -230,5 +231,9 @@ public class TUIRun {
 		String password = "Abc02324";
 		return password;
 	}
+
+
+
+
 
 }

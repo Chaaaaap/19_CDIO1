@@ -3,6 +3,7 @@ package tui;
 import java.util.Scanner;
 
 import data.OperatorDTO;
+import interfaces.IMenuController;
 import interfaces.IOperatorDAO.DALException;
 
 public class TUIController {
