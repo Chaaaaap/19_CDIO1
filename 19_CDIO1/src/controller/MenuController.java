@@ -12,12 +12,12 @@ public class MenuController implements IMenuController {
 	private Scanner scan;	
 	private int choice;
 	private boolean loop = true;
-	private OperatorController oCont;
+	private OperatorDAO oCont;
 
 	public MenuController() throws DALException {
 		tCont = new TUIController();
 		scan =  new Scanner(System.in);
-		oCont = new OperatorController();
+		oCont = new OperatorDAO();
 	}
 
 	public void mainMenu(Scanner scan) throws DALException{

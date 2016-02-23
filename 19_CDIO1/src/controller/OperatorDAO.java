@@ -8,11 +8,11 @@ import java.util.Map;
 import data.OperatorDTO;
 import interfaces.IOperatorDAO;
 
-public class OperatorController implements IOperatorDAO {
+public class OperatorDAO implements IOperatorDAO {
 
 	private Map<Integer, OperatorDTO> operatorList = new HashMap<>();
 
-	public OperatorController() throws DALException {
+	public OperatorDAO() throws DALException {
 		//oprId 10
 		OperatorDTO sysAdmin = new OperatorDTO("Sys", "Admin", "999999-9999");
 		createOperatoer(sysAdmin);
