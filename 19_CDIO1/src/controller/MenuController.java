@@ -25,7 +25,7 @@ public class MenuController implements IMenuController {
 
 		do{
 			System.out.println("Du har nu følgende valgmuligheder:\n"
-					+ "1. Opret ny bruger.\n"
+					+ "1. Administrer brugere.\n"
 					+ "2. Skift password.\n"
 					+ "3. Afvejning.\n"
 					+ "4. Afslut.\n"
@@ -33,7 +33,8 @@ public class MenuController implements IMenuController {
 			choice = scan.nextInt();
 
 			if(choice == 1){
-				createUser(scan);
+				admministrerUsers(scan);
+//				createUser(scan);
 			}
 			else if(choice == 2){
 				changePassword(scan);
@@ -50,6 +51,29 @@ public class MenuController implements IMenuController {
 			}
 		}
 		while(loop);
+	}
+
+	private void admministrerUsers(Scanner scan) {
+		do {
+			System.out.println("Du har nu følgende valgmuligheder:\n"
+					+ "1. Administrer brugere.\n"
+					+ "2. Skift password.\n"
+					+ "3. Afvejning.\n"
+					+ "4. Afslut.\n"
+					+ "Indtast et nummer mellem 1-4:");
+			
+			if(choice == 1){
+			}
+			else if(choice == 2){
+			}
+			else if(choice == 3){
+			}
+			else if(choice == 4){
+			}
+			else{
+				System.out.println("Du har indtastet et ikke gyldigt nummer. Prøv igen.");
+			}
+		} while(loop);
 	}
 
 	private void exit() {
