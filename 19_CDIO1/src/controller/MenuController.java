@@ -120,14 +120,7 @@ public class MenuController implements IMenuController {
 		} catch(DALException e){
 			System.out.println(e.getMessage());
 		}
-		
-//		if(deleteID == oCont.getOperatoerList().get(0)) {
-//			
-//			
-//			
-//		}else
-//			System.out.println("Det indtastede bruger ID er ikke gyldigt.");
-	
+
 }
 
 
@@ -143,13 +136,6 @@ public class MenuController implements IMenuController {
 		} catch(DALException e){
 			System.out.println(e.getMessage());
 		}
-		
-		
-		
-//		if(updateID == oCont.getOperatoer().get(oprId)) {
-//			
-//		}else
-//			System.out.println("Det indtastede bruger ID er ikke gyldigt");
 		
 }
 
