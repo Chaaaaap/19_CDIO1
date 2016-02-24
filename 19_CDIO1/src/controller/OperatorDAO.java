@@ -13,7 +13,7 @@ public class OperatorDAO implements IOperatorDAO {
 	private Map<Integer, OperatorDTO> operatorList = new HashMap<>();
 
 	public OperatorDAO() throws DALException {
-		//oprId 10
+		//oprId 10 aka System Admin
 		OperatorDTO sysAdmin = new OperatorDTO("Sys", "Admin", "999999-9999");
 		createOperatoer(sysAdmin);
 		sysAdmin.changePassword("Abc02324");
