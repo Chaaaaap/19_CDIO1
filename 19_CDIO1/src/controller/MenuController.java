@@ -322,7 +322,7 @@ private int choice;
 	}
 
 	private String printAllOperators(List<OperatorDTO> list) {
-		String toString = "OprID \t Brugernavn\n";
+		String toString = "OprID \tBrugernavn\n";
 		for (int i = 0; i < list.size(); i++) {
 			toString += list.get(i).toString()+"\n";
 		}
