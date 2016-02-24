@@ -37,37 +37,47 @@ public class OperatorDTO {
 		return cpr;
 	}
 
-	public boolean changePassword(String newpass) {
+	public boolean changePassword(String newpass) throws DALException{
 		int capitalLetter = 0;
 		int smallLetter = 0;
 		int number = 0;
-		for(int i = 0; i < newpass.length(); i++){
-			if(newpass.charAt(i) >= 'A' && newpass.charAt(i) <= 'Z') {
-				capitalLetter = 1;
+		int passwordLength = 0;
+		if(newpass.length() >= 6) {
+			for(int i = 0; i < newpass.length(); i++){
+				if(newpass.charAt(i) >= 'A' && newpass.charAt(i) <= 'Z') {
+					capitalLetter = 1;
+				}
+				if(newpass.charAt(i) >= 'a' && newpass.charAt(i) <= 'z') {
+					smallLetter = 1;
+				}
+				if(newpass.charAt(i) >= '0' && newpass.charAt(i) <= '9'){
+					number = 1;
+				}
+
 			}
-			if(newpass.charAt(i) >= 'a' && newpass.charAt(i) <= 'z') {
-				smallLetter = 1;
+			if(capitalLetter+smallLetter+number+passwordLength >= 3) {
+				password = newpass;
+				return true;
 			}
-			if(newpass.charAt(i) >= '0' && newpass.charAt(i) <= '9'){
-				number = 1;
-			}
+			throw new DALException("Passwordet skal indeholde minimum et stort tegn, et lille tegn og et tal.");
+		} else {
+			throw new DALException("Passwordet skal minimum være 6 tegn langt.");
 		}
-		if(capitalLetter+smallLetter+number >= 3) {
-			password = newpass;
-			return true;
-		}
-		return false;
 	}
 
 	public int getOprId() {
 		return oprId;
 	}
-	
+
 	public void updateOpr(String oprNavn, String cpr) throws DALException {
 		this.oprNavn = oprNavn;
 		this.cpr = cpr;
 		if(cpr.length() < 11 && cpr.length() > 11) throw new DALException("CPR-nummeret er ikke gyldigt. Det skal skrives ddmmåå-xxxx");
 		password = createTempPassword();
+	}
+	
+	public String toString() {
+		return oprId+" "+oprNavn;
 	}
 
 }
