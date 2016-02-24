@@ -71,6 +71,6 @@ public class OperatorDAO implements IOperatorDAO {
 		else
 			return false;
 	}
-	
+
 
 }

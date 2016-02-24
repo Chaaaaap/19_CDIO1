@@ -1,21 +1,20 @@
 package controller;
 
 import java.util.Scanner;
+
+import data.OperatorDTO;
 import interfaces.IMenuController;
 import interfaces.IOperatorDAO.DALException;
-import tui.TUIController;
+//import tui.TUIController;
 
 public class MenuController implements IMenuController {
 
-	private TUIController tCont;
-	private Scanner scan;	
-	private int choice;
+private int choice;
 	private boolean loop = true;
 	private OperatorDAO oCont;
 
 	public MenuController() throws DALException {
-		tCont = new TUIController();
-		scan =  new Scanner(System.in);
+new Scanner(System.in);
 		oCont = new OperatorDAO();
 	}
 
@@ -64,7 +63,7 @@ public class MenuController implements IMenuController {
 					+ "3. Opdater bruger.\n"
 					+ "4. Tilbage til hovedmenu.\n"
 					+ "Indtast et nummer mellem 1-4:");
-			
+
 			choice = scan.nextInt();
 
 			if(choice == 1){
@@ -90,36 +89,65 @@ public class MenuController implements IMenuController {
 	}
 
 	public void createUser(Scanner scan) throws DALException{
-		
+
 		// Lav for-løkke? der kan udskrive brugerID på den nye operator
 
-		
-		
+
+
 		try {
-			oCont.createOperatoer(tCont.createrOperator(scan));				
+			oCont.createOperatoer(createrOperator(scan));				
 		} catch(DALException e) {
 			System.out.println(e.getMessage());
 			loop = true;
 		}
 
-			System.out.println("Brugeren er nu oprettet med et midlertidigt password.\n");
+		System.out.println("Brugeren er nu oprettet med et midlertidigt password.\n");
 	}
 
+	public OperatorDTO createrOperator(Scanner scan) throws DALException {
+
+		boolean alreadyExist = false;
+		String forNavn;
+		String efterNavn;
+		String cpr;
+
+		System.out.println("Indtast fornavn på den nye operatør");
+		forNavn = scan.next();
+		System.out.println("Indtast efternavn på den nye operatør");
+		efterNavn = scan.next();
+		System.out.println("Indtast CPR-nummer for operatøren");
+		cpr = scan.next();
+		
+		for(int i = 0; i < oCont.getOperatoerList().size(); i++) {
+			if(oCont.getOperatoerList().get(i).getCPR() == cpr)
+				alreadyExist = true;
+		}
+
+		if(cpr.length() < 11 || cpr.length() > 12) {
+			throw new DALException("Fejl! Det indtastede CPR-nummer er ikke gyldigt. Det skal indtastes ddmmåå-xxxx");
+		} else if(alreadyExist) {
+			throw new DALException("Fejl! Det indtastede CPR-nummer er allerede tilknyttet en bruger!");
+		}
+
+		OperatorDTO operator = new OperatorDTO(forNavn, efterNavn, cpr);
+
+		return operator;
+	}
 
 	public void deleteUser(Scanner scan) {
-		
+
 		System.out.println("Indtast bruger ID du ønsker at slette.");
-		
+
 		int deleteID;
 		deleteID = scan.nextInt();
-		
+
 		try {
 			oCont.deleteOperatoer(oCont.getOperatoer(deleteID));
 		} catch(DALException e){
 			System.out.println(e.getMessage());
 		}
 
-}
+	}
 
 
 	public void updateUser(Scanner scan) {
@@ -132,15 +160,15 @@ public class MenuController implements IMenuController {
 		oprNavn += scan.next();
 		System.out.println("Indtast det nye efternavn.");
 		oprNavn += scan.next();
-			
+
 		try {
 			oCont.getOperatoer(updateID).updateOpr(oprNavn, cpr);
 			oCont.updateOperatoer(oCont.getOperatoer(updateID));
 		} catch(DALException e){
 			System.out.println(e.getMessage());
 		}
-		
-}
+
+	}
 
 	public void changePassword(Scanner scan) throws DALException{
 
