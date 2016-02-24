@@ -61,7 +61,7 @@ public class OperatorDAO implements IOperatorDAO {
 		if(opr.getOprId() == 10) 
 			throw new DALException("Man kan ikke slette System Admin.");
 		else
-			operatorList.remove(opr);
+			operatorList.remove(opr.getOprId(), opr);
 	}
 
 	public boolean changePassword(int oprId, String newpass) throws DALException {
