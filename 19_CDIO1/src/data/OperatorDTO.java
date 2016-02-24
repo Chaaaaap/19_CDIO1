@@ -12,7 +12,7 @@ public class OperatorDTO {
 
 	public OperatorDTO(String forNavn, String efterNavn, String cpr) {
 		oprNavn = forNavn;
-		oprNavn += efterNavn;
+		oprNavn += " " + efterNavn;
 		this.cpr = cpr;
 		ini += forNavn.charAt(0) + efterNavn.charAt(0);
 		password = createTempPassword();
