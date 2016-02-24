@@ -115,6 +115,7 @@ private int choice;
 		String forNavn;
 		String efterNavn;
 		String cpr;
+		OperatorDTO operator = null;
 
 		System.out.println("Indtast fornavn på den nye operatør");
 		forNavn = scan.next();
@@ -134,9 +135,15 @@ private int choice;
 			throw new DALException("Fejl! Det indtastede CPR-nummer er allerede tilknyttet en bruger!");
 		}
 
-		OperatorDTO operator = new OperatorDTO(forNavn, efterNavn, cpr);
-
-		return operator;
+		try {
+			operator = new OperatorDTO(forNavn, efterNavn, cpr);
+		} catch(DALException e) {
+			System.out.println(e.getMessage());
+		}
+		if(operator != null)
+			return operator;
+		else
+			return null;
 	}
 
 	public void deleteUser(Scanner scan) {

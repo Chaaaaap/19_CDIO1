@@ -10,7 +10,7 @@ public class OperatorDTO {
 	private String cpr;		//Skal skrives med bindestreg
 	private String password;	
 
-	public OperatorDTO(String forNavn, String efterNavn, String cpr) {
+	public OperatorDTO(String forNavn, String efterNavn, String cpr) throws DALException {
 		oprNavn = forNavn;
 		oprNavn += " " + efterNavn;
 		this.cpr = cpr;
@@ -20,7 +20,7 @@ public class OperatorDTO {
 		oprId = oprID;
 		oprID++;
 		} else {
-			System.out.println("Du har opnået max antal brugere.");
+			throw new DALException("Du har desværre overskredet maximum antal brugere.");
 		}
 	}
 
