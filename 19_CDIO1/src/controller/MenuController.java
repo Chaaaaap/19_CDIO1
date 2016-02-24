@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import interfaces.IMenuController;
 import interfaces.IOperatorDAO.DALException;
@@ -34,7 +35,6 @@ public class MenuController implements IMenuController {
 
 			if(choice == 1){
 				admministrerUsers(scan);
-				//				createUser(scan);
 			}
 			else if(choice == 2){
 				changePassword(scan);
@@ -66,7 +66,7 @@ public class MenuController implements IMenuController {
 					+ "3. Opdater bruger.\n"
 					+ "4. Tilbage til hovedmenu.\n"
 					+ "Indtast et nummer mellem 1-4:");
-
+			
 			choice = scan.nextInt();
 
 			if(choice == 1){
@@ -98,13 +98,13 @@ public class MenuController implements IMenuController {
 		
 		
 		try {
-			oCont.createOperatoer(tCont.createrOperator(scan));
+			oCont.createOperatoer(tCont.createrOperator(scan));				
 		} catch(DALException e) {
 			System.out.println(e.getMessage());
 			loop = true;
 		}
 
-		System.out.println("Brugeren er nu oprettet med et midlertidigt password.\n");
+			System.out.println("Brugeren er nu oprettet med et midlertidigt password.\n");
 	}
 
 
@@ -115,6 +115,12 @@ public class MenuController implements IMenuController {
 		int deleteID;
 		deleteID = scan.nextInt();
 		
+		try {
+			oCont.deleteOperatoer(oCont.getOperatoer(deleteID));
+		} catch(DALException e){
+			System.out.println(e.getMessage());
+		}
+		
 //		if(deleteID == oCont.getOperatoerList().get(0)) {
 //			
 //			
@@ -123,6 +129,7 @@ public class MenuController implements IMenuController {
 //			System.out.println("Det indtastede bruger ID er ikke gyldigt.");
 	
 }
+
 
 	public void updateUser(Scanner scan) {
 		

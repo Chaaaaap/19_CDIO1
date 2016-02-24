@@ -58,8 +58,10 @@ public class OperatorDAO implements IOperatorDAO {
 
 	@Override
 	public void deleteOperatoer(OperatorDTO opr) throws DALException {
-		// TODO Auto-generated method stub
-		operatorList.remove(opr);
+		if(opr.getOprId() == 10) 
+			throw new DALException("Man kan ikke slette System Admin.");
+		else
+			operatorList.remove(opr);
 	}
 
 	public boolean passwordCheck(String oprNavn, String password) {
