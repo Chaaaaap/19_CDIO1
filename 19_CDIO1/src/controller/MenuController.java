@@ -138,6 +138,14 @@ public class MenuController implements IMenuController {
 		int updateID;
 		updateID = scan.nextInt();
 		
+		try {
+			oCont.updateOperatoer(oCont.getOperatoer(updateID));
+		} catch(DALException e){
+			System.out.println(e.getMessage());
+		}
+		
+		
+		
 //		if(updateID == oCont.getOperatoer().get(oprId)) {
 //			
 //		}else
