@@ -298,8 +298,7 @@ private int choice;
 		System.out.println("Password:");
 		password = scan.next();
 
-		if(sysAdminOprId() == oprId && password.equals(sysAdminPassword())){
-			// Her skal stå den metoder der adminisrerer brugere
+		if(sysAdminOprId() == oprId && password.equals(oCont.getOperatoer(10).getPassword())){
 			return true;
 		}
 		else{
@@ -322,7 +321,7 @@ private int choice;
 	}
 
 	private String printAllOperators(List<OperatorDTO> list) {
-		String toString = "OprID \tBrugernavn\n";
+		String toString = "OprID \tBrugernavn\tCPR-nummer\n";
 		for (int i = 0; i < list.size(); i++) {
 			toString += list.get(i).toString()+"\n";
 		}
