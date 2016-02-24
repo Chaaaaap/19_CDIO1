@@ -1,7 +1,6 @@
 package controller;
 
 import java.util.Scanner;
-
 import interfaces.IMenuController;
 import interfaces.IOperatorDAO.DALException;
 import tui.TUIController;
@@ -11,6 +10,7 @@ public class MenuController implements IMenuController {
 	private TUIController tCont;
 	private Scanner scan;	
 	private int choice;
+	private int userId;
 	private boolean loop = true;
 	private OperatorDAO oCont;
 
@@ -21,7 +21,7 @@ public class MenuController implements IMenuController {
 	}
 
 	public void mainMenu(Scanner scan) throws DALException{
-		System.out.println("Velkommen til 'applikation-navn'!\n");
+		System.out.println("Velkommen til Afvejningssystemet!\n");
 
 		do{
 			System.out.println("Du har nu følgende valgmuligheder:\n"
@@ -34,7 +34,7 @@ public class MenuController implements IMenuController {
 
 			if(choice == 1){
 				admministrerUsers(scan);
-//				createUser(scan);
+				//				createUser(scan);
 			}
 			else if(choice == 2){
 				changePassword(scan);
@@ -44,39 +44,45 @@ public class MenuController implements IMenuController {
 			}
 			else if(choice == 4){
 				exit();
-				System.out.println("Du har afsluttet applikation. På gensyn.");
+				System.out.println("Du har afsluttet applikationen. På gensyn.");
 			}
 			else{
-				System.out.println("Du har indtastet et ikke gyldigt nummer. Prøv igen.");
+				System.out.println("Du har indtastet et ugyldigt nummer. Prøv igen.");
 			}
 		}
 		while(loop);
 	}
 
 	private void admministrerUsers(Scanner scan) throws DALException {
+
+		System.out.println("Log venligst ind som System Admin for at administrere brugere.");
+
+		loginSysAdmin(scan);
+
 		do {
 			System.out.println("Du har nu følgende valgmuligheder:\n"
-					+ "1. Opret bruger.\n"
+					+ "1. Opret ny bruger.\n"
 					+ "2. Slet bruger.\n"
 					+ "3. Opdater bruger.\n"
-					+ "4. Gå tilbage.\n"
+					+ "4. Tilbage til hovedmenu.\n"
 					+ "Indtast et nummer mellem 1-4:");
-			
+
 			choice = scan.nextInt();
-			
+
 			if(choice == 1){
 				createUser(scan);
 			}
 			else if(choice == 2){
-				
+				deleteUser(scan);
 			}
 			else if(choice == 3){
+				updateUser(scan);
 			}
 			else if(choice == 4){
 				mainMenu(scan);
 			}
 			else{
-				System.out.println("Du har indtastet et ikke gyldigt nummer. Prøv igen.");
+				System.out.println("Du har indtastet et ugyldigt nummer. Prøv igen.");
 			}
 		} while(loop);
 	}
@@ -87,36 +93,53 @@ public class MenuController implements IMenuController {
 
 	public void createUser(Scanner scan) throws DALException{
 		
-		do{
-			System.out.println("Du har nu følgende valgmuligheder:\n"
-					+ "1. Opret ny bruger.\n"
-					+ "2. Gå tilbage.\n"
-					+ "Indtast et nummer mellem 1-2:");
-			choice = scan.nextInt();
+		// Lav for-løkke? der kan udskrive brugerID på den nye operator
 
-			if(choice == 1){
-				if(loginSysAdmin(scan)) {
-					try {
-					oCont.createOperatoer(tCont.createrOperator(scan));
-					} catch(DALException e) {
-						System.out.println(e.getMessage());
-						loop = true;
-					}
-				}
-			}
-			else if(choice == 2){
-				admministrerUsers(scan);
-			}
-			else{
-				System.out.println("Du har indtastet et ikke gyldigt nummer. Prøv igen.");
-			}
-
+		
+		
+		try {
+			oCont.createOperatoer(tCont.createrOperator(scan));
+		} catch(DALException e) {
+			System.out.println(e.getMessage());
+			loop = true;
 		}
-		while(loop);
+
+		System.out.print("Brugeren er oprettet med midlertidigt password.\n");
 	}
 
-	public void changePassword(Scanner scan) throws DALException{
+
+	public void deleteUser(Scanner scan) {
 		
+		System.out.println("Indtast bruger ID du ønsker at slette.");
+		
+		int deleteID;
+		deleteID = scan.nextInt();
+		
+//		if(deleteID == oCont.getOperatoerList().get(0)) {
+//			
+//			
+//			
+//		}else
+//			System.out.println("Det indtastede bruger ID er ikke gyldigt.");
+	
+}
+
+	public void updateUser(Scanner scan) {
+		
+		System.out.println("Indtast bruger ID du ønsker at opdatere.");
+		
+		int updateID;
+		updateID = scan.nextInt();
+		
+//		if(updateID == oCont.getOperatoer().get(oprId)) {
+//			
+//		}else
+//			System.out.println("Det indtastede bruger ID er ikke gyldigt");
+		
+}
+
+	public void changePassword(Scanner scan) throws DALException{
+
 		do{
 			System.out.println("Du har nu følgende valgmuligheder:\n"
 					+ "1. Skift password.\n"
@@ -127,7 +150,7 @@ public class MenuController implements IMenuController {
 			if(choice == 1){
 				System.out.println("Skift password.");
 				try {
-				skiftKode(scan);
+					skiftKode(scan);
 				} catch(DALException e) {
 					System.out.println(e.getMessage());
 					loop = true;
@@ -221,7 +244,7 @@ public class MenuController implements IMenuController {
 		double emballage = scan.nextDouble();
 		System.out.println("Indtast bruttovægt i kg.");
 		double brutto = scan.nextDouble();
-		System.out.println("Din netto vægt i kg.");
+
 		double netto = brutto - emballage;
 
 		return netto;
@@ -231,7 +254,6 @@ public class MenuController implements IMenuController {
 	public boolean loginSysAdmin(Scanner scan) throws DALException{
 		int oprId;
 		String password;
-		System.out.println("Login som sysadmin.");
 
 		System.out.println("Bruger nr.:");
 		oprId = scan.nextInt();
@@ -239,11 +261,12 @@ public class MenuController implements IMenuController {
 		password = scan.next();
 
 		if(sysAdminOprId() == oprId && password.equals(sysAdminPassword())){
+			// Her skal stå den metoder der adminisrerer brugere
 			return true;
 		}
 		else{
 			System.out.println("Forkert bruger nr. eller password. Du bliver ført tilbage til foregående menu. \n");
-			createUser(scan);
+			mainMenu(scan);
 			return false;
 
 		}
@@ -259,9 +282,5 @@ public class MenuController implements IMenuController {
 		String password = "Abc02324";
 		return password;
 	}
-
-
-
-
 
 }
