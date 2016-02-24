@@ -107,7 +107,6 @@ private int choice;
 			loop = true;
 		}
 
-		System.out.println("Brugeren er nu oprettet med et midlertidigt password.\n");
 	}
 
 	public OperatorDTO createrOperator(Scanner scan) throws DALException {
