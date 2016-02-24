@@ -1,5 +1,6 @@
 package data;
 
+import interfaces.IOperatorDAO.DALException;
 
 public class OperatorDTO {
 	private static int oprID = 10;
@@ -60,6 +61,13 @@ public class OperatorDTO {
 
 	public int getOprId() {
 		return oprId;
+	}
+	
+	public void updateOpr(String oprNavn, String cpr) throws DALException {
+		this.oprNavn = oprNavn;
+		this.cpr = cpr;
+		if(cpr.length() < 11 && cpr.length() > 11) throw new DALException("CPR-nummeret er ikke gyldigt. Det skal skrives ddmmåå-xxxx");
+		password = createTempPassword();
 	}
 
 }
