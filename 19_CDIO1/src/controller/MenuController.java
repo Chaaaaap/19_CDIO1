@@ -79,7 +79,7 @@ private int choice;
 				updateUser(scan);
 			}
 			else if(choice == 4) {
-				printAllOperators(oCont.getOperatoerList());
+				System.out.println(printAllOperators(oCont.getOperatoerList()));
 			}
 			else if(choice == 5){
 				mainMenu(scan);
