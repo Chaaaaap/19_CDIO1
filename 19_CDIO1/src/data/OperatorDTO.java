@@ -24,7 +24,7 @@ public class OperatorDTO {
 		return "Test1234";
 	}
 
-	public String getOprNavn(String cpr) {
+	public String getOprNavn() {
 		return oprNavn;
 	}
 

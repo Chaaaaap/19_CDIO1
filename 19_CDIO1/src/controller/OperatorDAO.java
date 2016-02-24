@@ -64,16 +64,7 @@ public class OperatorDAO implements IOperatorDAO {
 			operatorList.remove(opr);
 	}
 
-	public boolean passwordCheck(String oprNavn, String password) {
-		for(int i = 0; i < operatorList.size(); i++)
-			if(operatorList.get(i).getOprNavn(oprNavn).equals(oprNavn)) {
-				if(operatorList.get(i).getPassword().equals(password))
-					return true;
-			}
-		return false;
-	}
-
-	public boolean changePassword(int oprId, String newpass) {
+	public boolean changePassword(int oprId, String newpass) throws DALException {
 		OperatorDTO operator = operatorList.get(oprId);
 		if(operator.changePassword(newpass))
 			return true;
