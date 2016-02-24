@@ -53,22 +53,27 @@ public class MenuController implements IMenuController {
 		while(loop);
 	}
 
-	private void admministrerUsers(Scanner scan) {
+	private void admministrerUsers(Scanner scan) throws DALException {
 		do {
 			System.out.println("Du har nu følgende valgmuligheder:\n"
-					+ "1. Administrer brugere.\n"
-					+ "2. Skift password.\n"
-					+ "3. Afvejning.\n"
-					+ "4. Afslut.\n"
+					+ "1. Opret bruger.\n"
+					+ "2. Slet bruger.\n"
+					+ "3. Opdater bruger.\n"
+					+ "4. Gå tilbage.\n"
 					+ "Indtast et nummer mellem 1-4:");
 			
+			choice = scan.nextInt();
+			
 			if(choice == 1){
+				createUser(scan);
 			}
 			else if(choice == 2){
+				
 			}
 			else if(choice == 3){
 			}
 			else if(choice == 4){
+				mainMenu(scan);
 			}
 			else{
 				System.out.println("Du har indtastet et ikke gyldigt nummer. Prøv igen.");
@@ -100,7 +105,7 @@ public class MenuController implements IMenuController {
 				}
 			}
 			else if(choice == 2){
-				mainMenu(scan);
+				admministrerUsers(scan);
 			}
 			else{
 				System.out.println("Du har indtastet et ikke gyldigt nummer. Prøv igen.");
@@ -216,7 +221,7 @@ public class MenuController implements IMenuController {
 		double emballage = scan.nextDouble();
 		System.out.println("Indtast bruttovægt i kg.");
 		double brutto = scan.nextDouble();
-
+		System.out.println("Din netto vægt i kg.");
 		double netto = brutto - emballage;
 
 		return netto;
