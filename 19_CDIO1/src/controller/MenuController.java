@@ -1,6 +1,5 @@
 package controller;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 import interfaces.IMenuController;
 import interfaces.IOperatorDAO.DALException;
@@ -11,7 +10,6 @@ public class MenuController implements IMenuController {
 	private TUIController tCont;
 	private Scanner scan;	
 	private int choice;
-	private int userId;
 	private boolean loop = true;
 	private OperatorDAO oCont;
 
@@ -127,11 +125,10 @@ public class MenuController implements IMenuController {
 	public void updateUser(Scanner scan) {
 		
 		System.out.println("Indtast bruger ID du ønsker at opdatere.");
-		
-		int updateID;
-		updateID = scan.nextInt();
+		int updateID = scan.nextInt();
 		
 		try {
+			
 			oCont.updateOperatoer(oCont.getOperatoer(updateID));
 		} catch(DALException e){
 			System.out.println(e.getMessage());

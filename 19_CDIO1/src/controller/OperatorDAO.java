@@ -51,6 +51,7 @@ public class OperatorDAO implements IOperatorDAO {
 
 	@Override
 	public void updateOperatoer(OperatorDTO opr) throws DALException {
+		
 		if (operatorList.get(opr.getOprId())==null) throw new DALException("Brugeren findes ikke");
 		operatorList.put(opr.getOprId(), opr);
 
