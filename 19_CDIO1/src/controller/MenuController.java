@@ -298,7 +298,7 @@ private int choice;
 		System.out.println("Password:");
 		password = scan.next();
 
-		if(sysAdminOprId() == oprId && password.equals(oCont.getOperatoer(10).getPassword())){
+		if(oprId == 10 && password.equals(oCont.getOperatoer(10).getPassword())){
 			return true;
 		}
 		else{
@@ -308,16 +308,6 @@ private int choice;
 
 		}
 
-	}
-
-	public int sysAdminOprId(){
-		int oprId = 10;
-		return oprId;
-	}
-
-	public String sysAdminPassword(){
-		String password = "Abc02324";
-		return password;
 	}
 
 	private String printAllOperators(List<OperatorDTO> list) {
