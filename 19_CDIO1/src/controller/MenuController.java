@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import data.OperatorDTO;
@@ -61,7 +63,8 @@ private int choice;
 					+ "1. Opret ny bruger.\n"
 					+ "2. Slet bruger.\n"
 					+ "3. Opdater bruger.\n"
-					+ "4. Tilbage til hovedmenu.\n"
+					+ "4. Udskriv alle brugere.\n"
+					+ "5. Tilbage til hovedmenu.\n"
 					+ "Indtast et nummer mellem 1-4:");
 
 			choice = scan.nextInt();
@@ -75,7 +78,10 @@ private int choice;
 			else if(choice == 3){
 				updateUser(scan);
 			}
-			else if(choice == 4){
+			else if(choice == 4) {
+				printAllOperators(oCont.getOperatoerList());
+			}
+			else if(choice == 5){
 				mainMenu(scan);
 			}
 			else{
@@ -315,4 +321,11 @@ private int choice;
 		return password;
 	}
 
+	private String printAllOperators(List<OperatorDTO> list) {
+		String toString = "";
+		for (int i = 0; i < list.size(); i++) {
+			toString += list.get(i).toString()+"\n";
+		}
+		return toString;
+	}
 }
