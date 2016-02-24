@@ -1,6 +1,5 @@
 package controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -13,10 +12,8 @@ public class MenuController implements IMenuController {
 private int choice;
 	private boolean loop = true;
 	private OperatorDAO oCont;
-	private Scanner scan;
 
 	public MenuController() throws DALException {
-		new Scanner(System.in);
 		oCont = new OperatorDAO();
 	}
 
