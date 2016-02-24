@@ -5,16 +5,16 @@ import java.util.Scanner;
 import data.OperatorDTO;
 import interfaces.IMenuController;
 import interfaces.IOperatorDAO.DALException;
-//import tui.TUIController;
 
 public class MenuController implements IMenuController {
 
 private int choice;
 	private boolean loop = true;
 	private OperatorDAO oCont;
+	private Scanner scan;
 
 	public MenuController() throws DALException {
-new Scanner(System.in);
+		new Scanner(System.in);
 		oCont = new OperatorDAO();
 	}
 
