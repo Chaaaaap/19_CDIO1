@@ -104,7 +104,7 @@ public class MenuController implements IMenuController {
 			loop = true;
 		}
 
-		System.out.print("Brugeren er oprettet med midlertidigt password.\n");
+		System.out.println("Brugeren er nu oprettet med et midlertidigt password.\n");
 	}
 
 
