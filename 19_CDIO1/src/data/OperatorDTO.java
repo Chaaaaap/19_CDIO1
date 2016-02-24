@@ -28,11 +28,7 @@ public class OperatorDTO {
 		return oprNavn;
 	}
 
-	public String getPassword(String cpr) {
-		return password;
-	}
-
-	public String getPassword(int oprId) {
+	public String getPassword() {
 		return password;
 	}
 

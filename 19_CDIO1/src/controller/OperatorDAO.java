@@ -67,7 +67,7 @@ public class OperatorDAO implements IOperatorDAO {
 	public boolean passwordCheck(String oprNavn, String password) {
 		for(int i = 0; i < operatorList.size(); i++)
 			if(operatorList.get(i).getOprNavn(oprNavn).equals(oprNavn)) {
-				if(operatorList.get(i).getPassword(oprNavn).equals(password))
+				if(operatorList.get(i).getPassword().equals(password))
 					return true;
 			}
 		return false;

@@ -233,7 +233,7 @@ public class MenuController implements IMenuController {
 	public boolean passwordCheck(int oprId, String password) throws DALException {
 		for(int i = 0; i < oCont.getOperatoerList().size(); i++)
 			if(oCont.getOperatoerList().get(i).getOprId() == oprId)
-				if(oCont.getOperatoerList().get(i).getPassword(oprId).equals(password))
+				if(oCont.getOperatoerList().get(i).getPassword().equals(password))
 					return true;
 		return false;
 	}
