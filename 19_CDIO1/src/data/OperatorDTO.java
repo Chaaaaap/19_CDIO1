@@ -77,7 +77,7 @@ public class OperatorDTO {
 	}
 	
 	public String toString() {
-		return oprId+" "+oprNavn;
+		return oprId+"\t"+oprNavn;
 	}
 
 }
