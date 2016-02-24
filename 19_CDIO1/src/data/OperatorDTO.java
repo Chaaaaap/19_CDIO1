@@ -16,8 +16,12 @@ public class OperatorDTO {
 		this.cpr = cpr;
 		ini += forNavn.charAt(0) + efterNavn.charAt(0);
 		password = createTempPassword();
+		if(oprId <= 99) {
 		oprId = oprID;
 		oprID++;
+		} else {
+			System.out.println("Du har opnået max antal brugere.");
+		}
 	}
 
 	private String createTempPassword() {
