@@ -123,12 +123,18 @@ public class MenuController implements IMenuController {
 
 
 	public void updateUser(Scanner scan) {
-		
+		String oprNavn = "";
 		System.out.println("Indtast bruger ID du ønsker at opdatere.");
 		int updateID = scan.nextInt();
-		
-		try {
+		System.out.println("Indtast det nye CPR-nummer.");
+		String cpr = scan.next();
+		System.out.println("Indtast det nye fornavn.");
+		oprNavn += scan.next();
+		System.out.println("Indtast det nye efternavn.");
+		oprNavn += scan.next();
 			
+		try {
+			oCont.getOperatoer(updateID).updateOpr(oprNavn, cpr);
 			oCont.updateOperatoer(oCont.getOperatoer(updateID));
 		} catch(DALException e){
 			System.out.println(e.getMessage());
