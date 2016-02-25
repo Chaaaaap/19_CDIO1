@@ -16,7 +16,7 @@ public class OperatorDTO {
 		this.cpr = cpr;
 		ini += forNavn.charAt(0) + efterNavn.charAt(0);
 		password = createTempPassword();
-		if(oprId <= 99) {
+		if(oprID <= 99) {
 		oprId = oprID;
 		oprID++;
 		} else {
