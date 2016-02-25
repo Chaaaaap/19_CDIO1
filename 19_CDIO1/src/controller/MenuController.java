@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -9,7 +10,7 @@ import interfaces.IOperatorDAO.DALException;
 
 public class MenuController implements IMenuController {
 
-private int choice;
+	private int choice;
 	private boolean loop = true;
 	private OperatorDAO oCont;
 
@@ -17,36 +18,41 @@ private int choice;
 		oCont = new OperatorDAO();
 	}
 
-	public void mainMenu(Scanner scan) throws DALException{
+	public void mainMenu(Scanner scan) throws DALException, InputMismatchException{
 		System.out.println("Velkommen til Afvejningssystemet!\n");
+		try {
+			do{
+				System.out.println("Du har nu følgende valgmuligheder:\n"
+						+ "1. Administrer brugere.\n"
+						+ "2. Skift password.\n"
+						+ "3. Afvejning.\n"
+						+ "4. Afslut.\n"
+						+ "Indtast et nummer mellem 1-4:");
+				choice = scan.nextInt();
 
-		do{
-			System.out.println("Du har nu følgende valgmuligheder:\n"
-					+ "1. Administrer brugere.\n"
-					+ "2. Skift password.\n"
-					+ "3. Afvejning.\n"
-					+ "4. Afslut.\n"
-					+ "Indtast et nummer mellem 1-4:");
-			choice = scan.nextInt();
-
-			if(choice == 1){
-				admministrerUsers(scan);
+				if(choice == 1){
+					admministrerUsers(scan);
+				}
+				else if(choice == 2){
+					changePassword(scan);
+				}
+				else if(choice == 3){
+					balancing(scan);
+				}
+				else if(choice == 4){
+					exit();
+					System.out.println("Du har afsluttet applikationen. På gensyn.");
+				}
+				else{
+					System.out.println("Du har indtastet et ugyldigt nummer. Prøv igen.");
+				}
 			}
-			else if(choice == 2){
-				changePassword(scan);
-			}
-			else if(choice == 3){
-				balancing(scan);
-			}
-			else if(choice == 4){
-				exit();
-				System.out.println("Du har afsluttet applikationen. På gensyn.");
-			}
-			else{
-				System.out.println("Du har indtastet et ugyldigt nummer. Prøv igen.");
-			}
+			while(loop);
+			//Jeg kan ikke få try/catch til at virke i main :(
+		} catch(InputMismatchException e) {
+			throw new InputMismatchException("Du indtastede ikke et tal.");
 		}
-		while(loop);
+
 	}
 
 	private void admministrerUsers(Scanner scan) throws DALException {
@@ -120,7 +126,7 @@ private int choice;
 		efterNavn = scan.next();
 		System.out.println("Indtast CPR-nummer for operatøren");
 		cpr = scan.next();
-		
+
 		for(int i = 0; i < oCont.getOperatoerList().size(); i++) {
 			if(oCont.getOperatoerList().get(i).getCPR() == cpr)
 				alreadyExist = true;
