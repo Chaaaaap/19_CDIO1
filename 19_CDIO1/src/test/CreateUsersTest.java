@@ -74,6 +74,7 @@ public class CreateUsersTest {
 			System.out.println(oCont.getOperatoerList().get(i));
 		}
 	expected = 85;
+	
 	actual = oCont.getOperatoerList().size();
 	assertEquals(expected, actual);
 	}	
