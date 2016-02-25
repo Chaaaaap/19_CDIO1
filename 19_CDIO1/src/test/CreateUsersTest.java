@@ -18,18 +18,19 @@ import main.*;
 public class CreateUsersTest {
 
 	//Variables
+	private OperatorDAO oC;
 	private OperatorDAO oCont;
 	private OperatorDTO testOperator;
 
 	//This is where we set up the test.
 	@Before
 	public void setUp() throws Exception {
-	
+
+		oCont = new OperatorDAO();
 	}
 
 	@Test
 	public void CreateUserTest() throws Exception {
-		oCont = new OperatorDAO();
 		int expected = 4;
 		int actual = oCont.getOperatoerList().size();
 		assertEquals(expected, actual);
@@ -49,7 +50,6 @@ public class CreateUsersTest {
 
 	@Test
 	public void MaxAmountOfUsersTest() throws Exception {
-		oCont = new OperatorDAO();
 		int expected = 4;
 		int actual = oCont.getOperatoerList().size();
 		assertEquals(expected, actual);
@@ -70,9 +70,7 @@ public class CreateUsersTest {
 
 	}
 		
-		for (int i = 0; i < oCont.getOperatoerList().size(); i++) {
-			System.out.println(oCont.getOperatoerList().get(i));
-		}
+
 	expected = 85;
 	
 	actual = oCont.getOperatoerList().size();
