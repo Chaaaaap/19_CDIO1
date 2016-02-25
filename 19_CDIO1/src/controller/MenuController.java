@@ -319,7 +319,7 @@ public class MenuController implements IMenuController {
 
 	}
 
-	private String printAllOperators(List<OperatorDTO> list) {
+	public String printAllOperators(List<OperatorDTO> list) {
 		String toString = "OprID \tBrugernavn\tCPR-nummer\n";
 		for (int i = 0; i < list.size(); i++) {
 			toString += list.get(i).toString()+"\n";
