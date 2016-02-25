@@ -14,7 +14,7 @@ public class OperatorDAO implements IOperatorDAO {
 
 	public OperatorDAO() throws DALException {
 		//oprId 10 aka System Admin
-		OperatorDTO sysAdmin = new OperatorDTO("Sys", "Admin", "999999-9999");
+		OperatorDTO sysAdmin = new OperatorDTO("Sys", "Admin", "133337-1337");
 		createOperatoer(sysAdmin);
 		sysAdmin.changePassword("Abc02324");
 		//oprId 11
