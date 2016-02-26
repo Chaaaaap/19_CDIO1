@@ -326,6 +326,7 @@ public class MenuController implements IMenuController {
 		}
 		else{
 			throw new DALException("Forkert bruger nr. eller password. Du bliver ført tilbage til foregående menu. \n");
+		}
 	}
 
 	// Metode, hvor vi får udskrevet alle operatorer i systemet ud i konsollen.
