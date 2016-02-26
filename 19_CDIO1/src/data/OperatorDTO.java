@@ -10,6 +10,7 @@ public class OperatorDTO {
 	private String cpr;		//Skal skrives med bindestreg
 	private String password;	
 
+	// Konstruktør
 	public OperatorDTO(String forNavn, String efterNavn, String cpr) throws DALException {
 		oprNavn = forNavn;
 		oprNavn += " " + efterNavn;
@@ -23,9 +24,9 @@ public class OperatorDTO {
 			throw new DALException("Du har desværre overskredet maximum antal brugere.");
 		}
 	}
-
+	
+	// Opretter et midlertidigt password
 	private String createTempPassword() {
-		// Opretter et midlertidigt password
 		return "Test1234";
 	}
 
@@ -41,6 +42,7 @@ public class OperatorDTO {
 		return cpr;
 	}
 
+	// Vores metode til at skifte password, samt kravene for selve passwordet.
 	public boolean changePassword(String newpass) throws DALException{
 		int capitalLetter = 0;
 		int smallLetter = 0;
@@ -57,7 +59,6 @@ public class OperatorDTO {
 				if(newpass.charAt(i) >= '0' && newpass.charAt(i) <= '9'){
 					number = 1;
 				}
-
 			}
 			if(capitalLetter+smallLetter+number+passwordLength >= 3) {
 				password = newpass;
@@ -72,7 +73,8 @@ public class OperatorDTO {
 	public int getOprId() {
 		return oprId;
 	}
-
+	
+	// metode til at opdatere vores operatører.
 	public void updateOpr(String oprNavn, String cpr) throws DALException {
 		this.oprNavn = oprNavn;
 		this.cpr = cpr;
@@ -83,5 +85,4 @@ public class OperatorDTO {
 	public String toString() {
 		return oprId+"\t"+oprNavn+"\t"+cpr;
 	}
-
 }
