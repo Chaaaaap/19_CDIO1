@@ -52,15 +52,12 @@ public class MenuController implements IMenuController {
 		} catch(InputMismatchException e) {
 			throw new InputMismatchException("Du indtastede ikke et tal.");
 		}
-
 	}
 
 	private void admministrerUsers(Scanner scan) throws DALException {
 
 		System.out.println("Log venligst ind som System Admin for at administrere brugere.");
-
 		loginSysAdmin(scan);
-
 		do {
 			System.out.println("Du har nu følgende valgmuligheder:\n"
 					+ "1. Opret ny bruger.\n"
@@ -98,18 +95,12 @@ public class MenuController implements IMenuController {
 	}
 
 	public void createUser(Scanner scan) throws DALException{
-
-		// Lav for-løkke? der kan udskrive brugerID på den nye operator
-
-
-
 		try {
 			oCont.createOperatoer(createrOperator(scan));				
 		} catch(DALException e) {
 			System.out.println(e.getMessage());
 			loop = true;
 		}
-
 	}
 
 	public OperatorDTO createrOperator(Scanner scan) throws DALException {
@@ -161,9 +152,7 @@ public class MenuController implements IMenuController {
 		} catch(DALException e){
 			System.out.println(e.getMessage());
 		}
-
 	}
-
 
 	public void updateUser(Scanner scan) {
 		String oprNavn = "";
@@ -172,7 +161,7 @@ public class MenuController implements IMenuController {
 		System.out.println("Indtast det nye CPR-nummer.");
 		String cpr = scan.next();
 		System.out.println("Indtast det nye fornavn.");
-		oprNavn += scan.next();
+		oprNavn += scan.next() + " ";
 		System.out.println("Indtast det nye efternavn.");
 		oprNavn += scan.next();
 
@@ -182,7 +171,6 @@ public class MenuController implements IMenuController {
 		} catch(DALException e){
 			System.out.println(e.getMessage());
 		}
-
 	}
 
 	public void changePassword(Scanner scan) throws DALException{
@@ -273,7 +261,6 @@ public class MenuController implements IMenuController {
 		password = scan.next();
 
 		return passwordCheck(oprId, password);
-
 	}
 
 	public boolean passwordCheck(int oprId, String password) throws DALException {
@@ -295,7 +282,6 @@ public class MenuController implements IMenuController {
 		double netto = brutto - emballage;
 
 		return netto;
-
 	}
 
 	public boolean loginSysAdmin(Scanner scan) throws DALException{
@@ -314,9 +300,7 @@ public class MenuController implements IMenuController {
 			System.out.println("Forkert bruger nr. eller password. Du bliver ført tilbage til foregående menu. \n");
 			mainMenu(scan);
 			return false;
-
 		}
-
 	}
 
 	public String printAllOperators(List<OperatorDTO> list) {

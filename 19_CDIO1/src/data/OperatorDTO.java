@@ -3,6 +3,8 @@ package data;
 import interfaces.IOperatorDAO.DALException;
 
 public class OperatorDTO {
+	
+	// Attributter
 	private static int oprID = 10;
 	private int oprId;		//Skal automatisk tildeles en bruger ved oprettelse. Mellem 11-99
 	private String oprNavn;	//Minimum 2 og max 20 karakterer.
@@ -42,7 +44,7 @@ public class OperatorDTO {
 		return cpr;
 	}
 
-	// Vores metode til at skifte password, samt kravene for selve passwordet.
+	// Vores data, for kravene for selve passwordet.
 	public boolean changePassword(String newpass) throws DALException{
 		int capitalLetter = 0;
 		int smallLetter = 0;
