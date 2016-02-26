@@ -9,7 +9,7 @@ import interfaces.IMenuController;
 import interfaces.IOperatorDAO.DALException;
 
 public class MenuController implements IMenuController {
-	
+
 	// Attributter
 	private int choice;
 	private boolean loop = true;
@@ -58,42 +58,48 @@ public class MenuController implements IMenuController {
 			throw new InputMismatchException("Du indtastede ikke et tal.");
 		}
 	}
-	
+
 	// Konsolmenu for at administrere brugerne. Kan kun benyttes af sys admin.
 	private void admministrerUsers(Scanner scan) throws DALException {
-
+		boolean admin = false;
 		System.out.println("Log venligst ind som System Admin for at administrere brugere.");
-		loginSysAdmin(scan);
-		do {
-			System.out.println("Du har nu følgende valgmuligheder:\n"
-					+ "1. Opret ny bruger.\n"
-					+ "2. Slet bruger.\n"
-					+ "3. Opdater bruger.\n"
-					+ "4. Udskriv alle brugere.\n"
-					+ "5. Tilbage til hovedmenu.\n"
-					+ "Indtast et nummer mellem 1-5:");
+		try {
+			admin = loginSysAdmin(scan);
+		} catch(DALException e) {
+			System.out.println(e.getMessage());
+		}
+		if(admin) {
+			do {
+				System.out.println("Du har nu følgende valgmuligheder:\n"
+						+ "1. Opret ny bruger.\n"
+						+ "2. Slet bruger.\n"
+						+ "3. Opdater bruger.\n"
+						+ "4. Udskriv alle brugere.\n"
+						+ "5. Tilbage til hovedmenu.\n"
+						+ "Indtast et nummer mellem 1-5:");
 
-			choice = scan.nextInt();
+				choice = scan.nextInt();
 
-			if(choice == 1){
-				createUser(scan);
-			}
-			else if(choice == 2){
-				deleteUser(scan);
-			}
-			else if(choice == 3){
-				updateUser(scan);
-			}
-			else if(choice == 4) {
-				System.out.println(printAllOperators(oCont.getOperatoerList()));
-			}
-			else if(choice == 5){
-				mainMenu(scan);
-			}
-			else{
-				System.out.println("Du har indtastet et ugyldigt nummer. Prøv igen.");
-			}
-		} while(loop);
+				if(choice == 1){
+					createUser(scan);
+				}
+				else if(choice == 2){
+					deleteUser(scan);
+				}
+				else if(choice == 3){
+					updateUser(scan);
+				}
+				else if(choice == 4) {
+					System.out.println(printAllOperators(oCont.getOperatoerList()));
+				}
+				else if(choice == 5){
+					mainMenu(scan);
+				}
+				else{
+					System.out.println("Du har indtastet et ugyldigt nummer. Prøv igen.");
+				}
+			} while(loop);
+		}
 	}
 
 	// Slutter vores applikation, ved at sætte loopet til false.
@@ -319,10 +325,7 @@ public class MenuController implements IMenuController {
 			return true;
 		}
 		else{
-			System.out.println("Forkert bruger nr. eller password. Du bliver ført tilbage til foregående menu. \n");
-			mainMenu(scan);
-			return false;
-		}
+			throw new DALException("Forkert bruger nr. eller password. Du bliver ført tilbage til foregående menu. \n");
 	}
 
 	// Metode, hvor vi får udskrevet alle operatorer i systemet ud i konsollen.
