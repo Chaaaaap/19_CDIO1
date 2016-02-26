@@ -34,7 +34,7 @@ public class OperatorDAO implements IOperatorDAO {
 	public OperatorDTO getOperatoer(int oprId) throws DALException {
 		OperatorDTO operator = operatorList.get(oprId);
 		if (operator != null) return operator;
-		throw new DALException("han findes ikke - eller hun findes ikke - eller brugeren");
+		throw new DALException("Brugeren findes ikke.");
 	}
 
 	@Override
