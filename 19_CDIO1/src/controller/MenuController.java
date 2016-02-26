@@ -9,15 +9,20 @@ import interfaces.IMenuController;
 import interfaces.IOperatorDAO.DALException;
 
 public class MenuController implements IMenuController {
-
+	
+	// Attributter
 	private int choice;
 	private boolean loop = true;
 	private OperatorDAO oCont;
 
+	// Konstruktør
 	public MenuController() throws DALException {
 		oCont = new OperatorDAO();
 	}
 
+	// Vores mainMenu som bliver udskrevet i konsollen.
+	// Denne kører i et do/while loop, indtil man har indtastet et nummer,
+	// som vil blive godkendt.
 	public void mainMenu(Scanner scan) throws DALException, InputMismatchException{
 		System.out.println("Velkommen til Afvejningssystemet!\n");
 		try {
@@ -53,7 +58,8 @@ public class MenuController implements IMenuController {
 			throw new InputMismatchException("Du indtastede ikke et tal.");
 		}
 	}
-
+	
+	// Konsolmenu for at administrere brugerne. Kan kun benyttes af sys admin.
 	private void admministrerUsers(Scanner scan) throws DALException {
 
 		System.out.println("Log venligst ind som System Admin for at administrere brugere.");
@@ -65,7 +71,7 @@ public class MenuController implements IMenuController {
 					+ "3. Opdater bruger.\n"
 					+ "4. Udskriv alle brugere.\n"
 					+ "5. Tilbage til hovedmenu.\n"
-					+ "Indtast et nummer mellem 1-4:");
+					+ "Indtast et nummer mellem 1-5:");
 
 			choice = scan.nextInt();
 
@@ -90,10 +96,13 @@ public class MenuController implements IMenuController {
 		} while(loop);
 	}
 
+	// Slutter vores applikation, ved at sætte loopet til false.
 	private void exit() {
 		loop = false;
 	}
 
+	// Her prøver vi at lave en ny bruger, hvis cpr-nummeret allerede 
+	// er brugt, så vil den catch en exception.
 	public void createUser(Scanner scan) throws DALException{
 		try {
 			oCont.createOperatoer(createrOperator(scan));				
@@ -103,6 +112,8 @@ public class MenuController implements IMenuController {
 		}
 	}
 
+	// Her opretter vi en bruger i konsollen, ved at indtaste nødvendige informationer,
+	// ved scanneren.
 	public OperatorDTO createrOperator(Scanner scan) throws DALException {
 
 		boolean alreadyExist = false;
@@ -140,6 +151,8 @@ public class MenuController implements IMenuController {
 			return null;
 	}
 
+	// Her sletter vi en bruger fra systemet, ved at indtaste et bruger ID. 
+	// Hvis dette ID er i systemet, vil denne bruger blive slettet.
 	public void deleteUser(Scanner scan) {
 
 		System.out.println("Indtast bruger ID du ønsker at slette.");
@@ -154,6 +167,8 @@ public class MenuController implements IMenuController {
 		}
 	}
 
+	// Her indtaster vi nye informationer om en bruger, som så overskriver de eksisterende. 
+	// Dette bliver gjort ved at man indtaster hvilket bruger ID man ønsker at opdatere. 
 	public void updateUser(Scanner scan) {
 		String oprNavn = "";
 		System.out.println("Indtast bruger ID du ønsker at opdatere.");
@@ -173,6 +188,7 @@ public class MenuController implements IMenuController {
 		}
 	}
 
+	// Menuen for at skifte password.
 	public void changePassword(Scanner scan) throws DALException{
 
 		do{
@@ -201,8 +217,9 @@ public class MenuController implements IMenuController {
 		while(loop);
 	}
 
+	// Her indtaster vi bruger ID og det gamle password, for at kunne indtaste det nye.
 	private void skiftKode(Scanner scan) throws DALException {
-		String newpass2 = "";
+		String newpass2 = " ";
 		String newpass = " ";
 		do {
 			System.out.println("Indtast bruger nr.");
@@ -228,6 +245,7 @@ public class MenuController implements IMenuController {
 		}while(!newpass.equals(newpass2));
 	}
 
+	// Menuen for afvejning.
 	public void balancing(Scanner scan) throws DALException{
 		System.out.println("Afvejning er kun tilladt for oprettede brugere.\nDu har nu følgende valgmuligheder:\n"
 				+ "1. Login.\n"
@@ -251,6 +269,7 @@ public class MenuController implements IMenuController {
 		while(choice > 2);
 	}
 
+	// I denne metode logger man ind som bruger.
 	public boolean oprLogin(Scanner scan) throws DALException {
 		String password;
 		int oprId;
@@ -263,6 +282,7 @@ public class MenuController implements IMenuController {
 		return passwordCheck(oprId, password);
 	}
 
+	// Her ser vi på om det indtastede password stemmer overens med brugerens password. 
 	public boolean passwordCheck(int oprId, String password) throws DALException {
 		for(int i = 0; i < oCont.getOperatoerList().size(); i++)
 			if(oCont.getOperatoerList().get(i).getOprId() == oprId)
@@ -271,6 +291,7 @@ public class MenuController implements IMenuController {
 		return false;
 	}
 
+	// Menuen, hvor man indtaster værdierne, på det man vil afveje.
 	public double afvejning(Scanner scan) throws DALException {
 
 		System.out.println("Afvejning.\n");
@@ -278,12 +299,13 @@ public class MenuController implements IMenuController {
 		double emballage = scan.nextDouble();
 		System.out.println("Indtast bruttovægt i kg.");
 		double brutto = scan.nextDouble();
-
+		System.out.println("Din nettovægt i kg.");
 		double netto = brutto - emballage;
 
 		return netto;
 	}
 
+	// Metode, hvor man kan logge ind som sys Admin, som er hardcoded i systemet.
 	public boolean loginSysAdmin(Scanner scan) throws DALException{
 		int oprId;
 		String password;
@@ -303,6 +325,7 @@ public class MenuController implements IMenuController {
 		}
 	}
 
+	// Metode, hvor vi får udskrevet alle operatorer i systemet ud i konsollen.
 	public String printAllOperators(List<OperatorDTO> list) {
 		String toString = "OprID \tBrugernavn\tCPR-nummer\n";
 		for (int i = 0; i < list.size(); i++) {
